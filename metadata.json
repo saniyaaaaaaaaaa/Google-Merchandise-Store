@@ -1,0 +1,6 @@
+{
+  "name": "Google Merchandise Store",
+  "description": "A data-driven, premium ecommerce redesign of the official Google Merchandise Store powered by GA4 customer behavior insights.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
