@@ -71,19 +71,19 @@ export const PersonalizedDiscovery: React.FC<PersonalizedDiscoveryProps> = ({
   const discoveryProducts = getSegmentProducts();
 
   return (
-    <section className="py-12 sm:py-16 bg-[#F8F7F4] border-b border-[#E5E0D8]">
+    <section className="py-12 sm:py-16 bg-[#0B0D0F] border-b border-[#2A2E33]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header with Segment Toggle */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
           <div>
             <div className="flex items-center gap-2 text-xs font-mono uppercase font-bold tracking-wider text-[#4285F4] mb-1.5">
               <Compass className="w-3.5 h-3.5" />
-              <span>Smart Recommendation Engine</span>
+              <span>Curated For You</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#202124] tracking-tight font-display">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight font-display">
               Made for your next scroll.
             </h2>
-            <p className="text-sm sm:text-base text-[#5F6368] max-w-xl mt-1">
+            <p className="text-sm sm:text-base text-[#9AA0A6] max-w-xl mt-1">
               Curated based on active regional trends across Mountain View, San Francisco, and New York.
             </p>
           </div>
@@ -97,8 +97,8 @@ export const PersonalizedDiscovery: React.FC<PersonalizedDiscoveryProps> = ({
               }}
               className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${
                 activeSegment === 'campus'
-                  ? 'bg-white text-[#202124] shadow-xs border border-[#DADCE0]'
-                  : 'text-[#5F6368] hover:text-[#202124] hover:bg-white/60'
+                  ? 'bg-[#17191C] text-white shadow-md border border-[#34A853]'
+                  : 'text-[#9AA0A6] hover:text-white hover:bg-[#17191C] border border-[#2A2E33]'
               }`}
             >
               <MapPin className="w-3.5 h-3.5 text-[#34A853]" />
@@ -112,8 +112,8 @@ export const PersonalizedDiscovery: React.FC<PersonalizedDiscoveryProps> = ({
               }}
               className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${
                 activeSegment === 'developer'
-                  ? 'bg-white text-[#202124] shadow-xs border border-[#DADCE0]'
-                  : 'text-[#5F6368] hover:text-[#202124] hover:bg-white/60'
+                  ? 'bg-[#17191C] text-white shadow-md border border-[#FBBC05]'
+                  : 'text-[#9AA0A6] hover:text-white hover:bg-[#17191C] border border-[#2A2E33]'
               }`}
             >
               <Sparkles className="w-3.5 h-3.5 text-[#FBBC05]" />
@@ -127,8 +127,8 @@ export const PersonalizedDiscovery: React.FC<PersonalizedDiscoveryProps> = ({
               }}
               className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${
                 activeSegment === 'classics'
-                  ? 'bg-white text-[#202124] shadow-xs border border-[#DADCE0]'
-                  : 'text-[#5F6368] hover:text-[#202124] hover:bg-white/60'
+                  ? 'bg-[#17191C] text-white shadow-md border border-[#4285F4]'
+                  : 'text-[#9AA0A6] hover:text-white hover:bg-[#17191C] border border-[#2A2E33]'
               }`}
             >
               <span className="w-2 h-2 rounded-full bg-[#4285F4]" />
@@ -143,11 +143,11 @@ export const PersonalizedDiscovery: React.FC<PersonalizedDiscoveryProps> = ({
                 }}
                 className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${
                   activeSegment === 'recent'
-                    ? 'bg-white text-[#202124] shadow-xs border border-[#DADCE0]'
-                    : 'text-[#5F6368] hover:text-[#202124] hover:bg-white/60'
+                    ? 'bg-[#17191C] text-white shadow-md border border-[#EA4335]'
+                    : 'text-[#9AA0A6] hover:text-white hover:bg-[#17191C] border border-[#2A2E33]'
                 }`}
               >
-                <History className="w-3.5 h-3.5 text-[#70757A]" />
+                <History className="w-3.5 h-3.5 text-[#EA4335]" />
                 <span>Recently Viewed ({recentlyViewed.length})</span>
               </button>
             )}

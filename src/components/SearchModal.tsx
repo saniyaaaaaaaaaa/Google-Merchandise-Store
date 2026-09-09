@@ -103,14 +103,14 @@ export const SearchModal: React.FC<SearchModalProps> = ({
           onSubmit={handleSearchSubmit}
           className="relative flex items-center px-6 py-5 border-b border-[#E5E0D8] bg-white"
         >
-          <Search className="w-6 h-6 text-[#C85A32] shrink-0 mr-3.5" />
+          <Search className="w-5 h-5 text-[#4285F4] shrink-0 mr-3.5" />
           <input
             ref={inputRef}
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search merchandise, 1998 retro, hoodies, Chrome Dino..."
-            className="w-full text-base sm:text-lg text-[#1A1A1A] placeholder:text-stone-400 bg-transparent outline-none font-medium"
+            placeholder="Search products…"
+            className="w-full text-base sm:text-lg text-[#202124] placeholder:text-[#5F6368] bg-transparent outline-none font-medium"
           />
           {query ? (
             <button
@@ -233,14 +233,14 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                     }}
                     className="p-3.5 rounded-2xl bg-white border border-[#E5E0D8] text-left hover:border-[#C85A32] hover:shadow-md transition-all group cursor-pointer"
                   >
-                    <span className="text-[10px] font-bold text-[#C85A32] uppercase tracking-wider block">
-                      TOP PERFORMER
+                    <span className="text-[10px] font-bold text-[#EA4335] uppercase tracking-wider block">
+                      ARCHIVAL CAPSULE
                     </span>
-                    <span className="font-bold text-[#1A1A1A] text-sm mt-0.5 block group-hover:text-[#C85A32]">
+                    <span className="font-bold text-[#202124] text-sm mt-0.5 block group-hover:text-[#EA4335]">
                       1998 Retro
                     </span>
-                    <span className="text-xs text-stone-500 mt-1 block">
-                      7 products • 9.5% bounce
+                    <span className="text-xs text-[#5F6368] mt-1 block">
+                      8 products • Mountain View drop
                     </span>
                   </button>
 

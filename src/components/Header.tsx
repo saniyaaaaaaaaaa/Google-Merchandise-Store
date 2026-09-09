@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search, ShoppingBag, Heart, BarChart3, Sparkles, Flame, Menu, X, ChevronRight } from 'lucide-react';
+import { Search, ShoppingBag, Heart, Menu, X, ChevronRight, ChevronDown, Sparkles } from 'lucide-react';
 import { trackPageView, trackSelectPromotion } from '../services/analytics';
 import { ViewMode } from '../types';
 
@@ -11,7 +11,7 @@ interface HeaderProps {
   onOpenSearch: () => void;
   onOpenCart: () => void;
   onOpenWishlist: () => void;
-  onOpenDataHub: () => void;
+  onOpenDataHub?: () => void;
   cartCount: number;
   wishlistCount: number;
 }
@@ -24,12 +24,13 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenSearch,
   onOpenCart,
   onOpenWishlist,
-  onOpenDataHub,
   cartCount,
   wishlistCount
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [collectionsOpen, setCollectionsOpen] = useState(false);
+  const [brandsOpen, setBrandsOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,39 +49,35 @@ export const Header: React.FC<HeaderProps> = ({
       onNavigate(view);
     }
     setMobileMenuOpen(false);
+    setCollectionsOpen(false);
+    setBrandsOpen(false);
   };
 
   return (
     <header className="sticky top-0 z-40 w-full transition-all duration-300">
       {/* Top Value Banner */}
-      <div className="bg-[#242220] text-[#E5E0D8] text-xs py-2 px-4 border-b border-[#383531]">
+      <div className="bg-[#111315] text-[#BDC1C6] text-xs py-2 px-4 border-b border-[#2A2E33]">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-2 overflow-hidden">
-            <span className="flex h-2 w-2 rounded-full bg-[#4A6B53] animate-pulse shrink-0" />
-            <span className="font-medium text-[#D5D0C7] truncate">
-              <strong className="text-white font-semibold">1998 Retro Drop Live:</strong> Free shipping on US orders $50+ • Fast delivery to Mountain View, NYC & SF
+            <span className="flex h-2 w-2 rounded-full bg-[#34A853] animate-pulse shrink-0" />
+            <span className="font-medium text-[#E8EAED] truncate">
+              <strong className="text-white font-semibold">1998 Retro Drop Live:</strong> Free US shipping on orders $50+ • Mountain View campus merchandise
             </span>
           </div>
 
-          <div className="hidden md:flex items-center gap-4 text-[11px] text-[#C5C0B7]">
+          <div className="hidden md:flex items-center gap-4 text-[11px] text-[#9AA0A6]">
             <button
               onClick={() => {
-                trackSelectPromotion('Retro Rewind Banner', 'top_announcement');
+                trackSelectPromotion('1998 Retro Top Banner', 'top_announcement');
                 onNavigate('campaign');
               }}
-              className="hover:text-white transition-colors underline underline-offset-2 flex items-center gap-1"
+              className="hover:text-white transition-colors underline underline-offset-2 flex items-center gap-1 cursor-pointer"
             >
-              <span>Explore Retro Rewind</span>
+              <span>Explore 1998 Retro</span>
               <ChevronRight className="w-3 h-3" />
             </button>
             <span>•</span>
-            <button
-              onClick={onOpenDataHub}
-              className="text-[#C85A32] hover:text-white font-mono flex items-center gap-1 font-semibold"
-            >
-              <BarChart3 className="w-3.5 h-3.5" />
-              <span>GA4 Research Mode</span>
-            </button>
+            <span className="text-[#34A853] font-medium">Authentic Campus Collection</span>
           </div>
         </div>
       </div>
@@ -89,8 +86,8 @@ export const Header: React.FC<HeaderProps> = ({
       <div
         className={`w-full transition-all duration-300 border-b ${
           isScrolled
-            ? 'bg-[#FAF8F5]/95 backdrop-blur-md shadow-xs border-[#E5E0D8] py-3'
-            : 'bg-[#FAF8F5] border-[#E8E4DC] py-4'
+            ? 'bg-[#0B0D0F]/95 backdrop-blur-md shadow-lg border-[#2A2E33] py-3'
+            : 'bg-[#0B0D0F] border-[#2A2E33] py-4'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
@@ -99,159 +96,218 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               id="mobile-menu-trigger"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 -ml-2 rounded-xl text-gray-700 hover:bg-gray-100 lg:hidden"
+              className="p-2 -ml-2 rounded-xl text-[#9AA0A6] hover:text-white hover:bg-[#17191C] lg:hidden cursor-pointer transition-colors"
               aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
 
-            {/* Brand Logo */}
+            {/* Official Google Merchandise Store Branding */}
             <div
               id="brand-logo"
               onClick={() => handleNavClick('home')}
-              className="flex items-center gap-2 cursor-pointer group select-none"
+              className="flex items-center gap-3 cursor-pointer group select-none"
             >
-              {/* Google Primary Colored Dots */}
-              <div className="flex items-center gap-1">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#4285F4] group-hover:scale-125 transition-transform" />
-                <span className="w-2.5 h-2.5 rounded-full bg-[#EA4335] group-hover:scale-125 transition-transform delay-75" />
-                <span className="w-2.5 h-2.5 rounded-full bg-[#FBBC05] group-hover:scale-125 transition-transform delay-150" />
-                <span className="w-2.5 h-2.5 rounded-full bg-[#34A853] group-hover:scale-125 transition-transform delay-200" />
+              {/* Official Full Multicolor Google Wordmark */}
+              <div className="flex items-center group-hover:opacity-90 transition-opacity shrink-0">
+                <svg
+                  viewBox="0 0 74 24"
+                  width="84"
+                  height="28"
+                  className="h-6 sm:h-7 w-auto shrink-0"
+                  aria-label="Google"
+                  role="img"
+                >
+                  <path fill="#4285F4" d="M9.24 8.19v2.46h5.88c-.18 1.38-.64 2.39-1.34 3.1-.86.86-2.2 1.8-4.54 1.8-3.62 0-6.45-2.92-6.45-6.54s2.83-6.54 6.45-6.54c1.95 0 3.38.77 4.43 1.76L15.4 2.5C13.94 1.08 11.98 0 9.24 0 4.28 0 .11 4.04.11 9s4.17 9 9.13 9c2.68 0 4.7-.88 6.28-2.52 1.62-1.62 2.13-3.91 2.13-5.75 0-.57-.04-1.1-.13-1.54H9.24z"/>
+                  <path fill="#EA4335" d="M25 6.19c-3.21 0-5.83 2.44-5.83 5.81 0 3.34 2.62 5.81 5.83 5.81s5.83-2.46 5.83-5.81c0-3.37-2.62-5.81-5.83-5.81zm0 9.33c-1.76 0-3.28-1.45-3.28-3.52 0-2.09 1.52-3.52 3.28-3.52s3.28 1.43 3.28 3.52c0 2.07-1.52 3.52-3.28 3.52z"/>
+                  <path fill="#FBBC05" d="M38 6.19c-3.21 0-5.83 2.44-5.83 5.81 0 3.34 2.62 5.81 5.83 5.81s5.83-2.46 5.83-5.81c0-3.37-2.62-5.81-5.83-5.81zm0 9.33c-1.76 0-3.28-1.45-3.28-3.52 0-2.09 1.52-3.52 3.28-3.52s3.28 1.43 3.28 3.52c0 2.07-1.52 3.52-3.28 3.52z"/>
+                  <path fill="#4285F4" d="M53.58 7.49h-.09c-.57-.68-1.67-1.3-3.06-1.3C47.53 6.19 45 8.72 45 12c0 3.26 2.53 5.81 5.43 5.81 1.39 0 2.49-.62 3.06-1.32h.09v.81c0 2.22-1.19 3.41-3.1 3.41-1.56 0-2.53-1.12-2.93-2.07l-2.22.92c.64 1.54 2.33 3.43 5.15 3.43 2.99 0 5.52-1.76 5.52-6.05V6.49h-2.42v1zm-2.93 8.03c-1.76 0-3.1-1.5-3.1-3.52 0-2.05 1.34-3.52 3.1-3.52 1.74 0 3.1 1.5 3.1 3.54.01 2.03-1.36 3.5-3.1 3.5z"/>
+                  <path fill="#34A853" d="M58 .24h2.51v17.57H58z"/>
+                  <path fill="#EA4335" d="M68.26 15.52c-1.3 0-2.22-.59-2.82-1.76l7.77-3.21-.26-.66c-.48-1.3-1.96-3.7-4.97-3.7-2.99 0-5.48 2.35-5.48 5.81 0 3.26 2.46 5.81 5.76 5.81 2.66 0 4.2-1.63 4.84-2.57l-1.98-1.32c-.66.96-1.56 1.6-2.86 1.6zm-.18-7.15c1.03 0 1.91.53 2.2 1.28l-5.25 2.17c0-2.44 1.73-3.45 3.05-3.45z"/>
+                </svg>
               </div>
 
-              <div className="flex flex-col">
-                <div className="flex items-center gap-1.5">
-                  <span className="font-display font-bold text-gray-900 text-lg tracking-tight group-hover:text-[#4285F4] transition-colors">
-                    Google
-                  </span>
-                  <span className="text-xs uppercase tracking-widest font-semibold text-gray-400">
-                    Store
-                  </span>
-                </div>
+              {/* Vertical divider and Store Subtitle */}
+              <div className="flex flex-col border-l border-[#2A2E33] pl-2.5 sm:pl-3">
+                <span className="text-[11px] sm:text-xs uppercase tracking-wider font-semibold text-[#F1F3F4] leading-tight">
+                  Merchandise Store
+                </span>
+                <span className="text-[10px] text-[#34A853] font-medium tracking-wide">
+                  Official Shop
+                </span>
               </div>
             </div>
           </div>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-6">
-            <button
-              id="nav-1998-retro"
-              onClick={() => handleNavClick('plp', '1998 Retro')}
-              className="text-sm font-semibold text-gray-800 hover:text-[#EA4335] transition-colors flex items-center gap-1.5"
-            >
-              <Flame className="w-3.5 h-3.5 text-[#EA4335]" />
-              <span>1998 Retro</span>
-              <span className="text-[10px] px-1.5 py-0.2 rounded bg-red-100 text-[#EA4335] font-bold">
-                HOT
-              </span>
-            </button>
-
-            <button
-              id="nav-gemini"
-              onClick={() => handleNavClick('plp', 'Gemini')}
-              className="text-sm font-semibold text-gray-800 hover:text-[#4285F4] transition-colors flex items-center gap-1.5"
-            >
-              <Sparkles className="w-3.5 h-3.5 text-[#4285F4]" />
-              <span>Gemini AI</span>
-            </button>
-
-            <button
-              id="nav-chrome-dino"
-              onClick={() => handleNavClick('plp', 'Chrome Dino')}
-              className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
-            >
-              Chrome Dino
-            </button>
-
+          {/* Desktop Navigation Links - ONLY: Apparel, Lifestyle, Stationery, Collections, Shop by Brand */}
+          <nav className="hidden lg:flex items-center gap-7 text-sm font-medium text-[#BDC1C6]">
+            {/* Apparel */}
             <button
               id="nav-apparel"
               onClick={() => handleNavClick('plp', undefined, 'Apparel')}
-              className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
+              className="hover:text-white hover:text-[#4285F4] transition-colors cursor-pointer"
             >
               Apparel
             </button>
 
+            {/* Lifestyle */}
             <button
-              id="nav-drinkware"
-              onClick={() => handleNavClick('plp', undefined, 'Drinkware')}
-              className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
+              id="nav-lifestyle"
+              onClick={() => handleNavClick('plp', undefined, 'Lifestyle')}
+              className="hover:text-white hover:text-[#4285F4] transition-colors cursor-pointer"
             >
-              Drinkware
+              Lifestyle
             </button>
 
+            {/* Stationery */}
             <button
-              id="nav-accessories"
-              onClick={() => handleNavClick('plp', undefined, 'Accessories')}
-              className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
+              id="nav-stationery"
+              onClick={() => handleNavClick('plp', undefined, 'Stationery')}
+              className="hover:text-white hover:text-[#4285F4] transition-colors cursor-pointer"
             >
-              Accessories
+              Stationery
             </button>
 
-            <button
-              id="nav-campaign-retro"
-              onClick={() => handleNavClick('campaign')}
-              className="text-sm font-bold text-[#EA4335] hover:text-[#C5221F] transition-colors underline decoration-2 underline-offset-4"
+            {/* Collections Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setCollectionsOpen(true)}
+              onMouseLeave={() => setCollectionsOpen(false)}
             >
-              Retro Rewind
-            </button>
+              <button
+                id="nav-collections"
+                onClick={() => setCollectionsOpen(prev => !prev)}
+                className="flex items-center gap-1 hover:text-white hover:text-[#4285F4] transition-colors py-1 cursor-pointer"
+              >
+                <span>Collections</span>
+                <ChevronDown className="w-3.5 h-3.5 text-[#9AA0A6]" />
+              </button>
+
+              {collectionsOpen && (
+                <div className="absolute top-full left-0 w-56 pt-2 z-50 animate-fade-in">
+                  <div className="bg-[#17191C] rounded-2xl shadow-2xl border border-[#2A2E33] p-2 space-y-1 backdrop-blur-xl">
+                    <button
+                      id="nav-col-1998-retro"
+                      onClick={() => handleNavClick('plp', '1998 Retro')}
+                      className="w-full text-left px-3 py-2 text-xs font-semibold rounded-xl hover:bg-[#EA4335]/15 text-[#EA4335] flex items-center justify-between cursor-pointer transition-colors"
+                    >
+                      <span>1998 Retro</span>
+                      <span className="text-[10px] px-1.5 py-0.5 rounded bg-[#EA4335]/20 text-[#EA4335] font-bold">Iconic</span>
+                    </button>
+                    <button
+                      id="nav-col-gemini"
+                      onClick={() => handleNavClick('plp', 'Gemini')}
+                      className="w-full text-left px-3 py-2 text-xs font-medium rounded-xl hover:bg-[#4285F4]/15 text-[#F1F3F4] hover:text-[#4285F4] flex items-center justify-between cursor-pointer transition-colors"
+                    >
+                      <span>Gemini AI</span>
+                      <Sparkles className="w-3 h-3 text-[#4285F4]" />
+                    </button>
+                    <button
+                      id="nav-col-chrome-dino"
+                      onClick={() => handleNavClick('plp', 'Chrome Dino')}
+                      className="w-full text-left px-3 py-2 text-xs font-medium rounded-xl hover:bg-[#2A2E33] text-[#F1F3F4] cursor-pointer transition-colors"
+                    >
+                      Chrome Dino
+                    </button>
+                    <button
+                      id="nav-col-campus-essentials"
+                      onClick={() => handleNavClick('plp', 'Campus Essentials')}
+                      className="w-full text-left px-3 py-2 text-xs font-medium rounded-xl hover:bg-[#2A2E33] text-[#F1F3F4] cursor-pointer transition-colors"
+                    >
+                      Campus Essentials
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Shop by Brand Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setBrandsOpen(true)}
+              onMouseLeave={() => setBrandsOpen(false)}
+            >
+              <button
+                id="nav-brands"
+                onClick={() => setBrandsOpen(prev => !prev)}
+                className="flex items-center gap-1 hover:text-white hover:text-[#4285F4] transition-colors py-1 cursor-pointer"
+              >
+                <span>Shop by Brand</span>
+                <ChevronDown className="w-3.5 h-3.5 text-[#9AA0A6]" />
+              </button>
+
+              {brandsOpen && (
+                <div className="absolute top-full left-0 w-52 pt-2 z-50 animate-fade-in">
+                  <div className="bg-[#17191C] rounded-2xl shadow-2xl border border-[#2A2E33] p-2 space-y-1 backdrop-blur-xl">
+                    <button
+                      onClick={() => handleNavClick('plp', undefined, 'Apparel')}
+                      className="w-full text-left px-3 py-2 text-xs font-medium rounded-xl hover:bg-[#2A2E33] text-[#F1F3F4] cursor-pointer transition-colors"
+                    >
+                      Google
+                    </button>
+                    <button
+                      onClick={() => handleNavClick('plp', '1998 Retro')}
+                      className="w-full text-left px-3 py-2 text-xs font-medium rounded-xl hover:bg-[#2A2E33] text-[#F1F3F4] cursor-pointer transition-colors"
+                    >
+                      Marine Layer
+                    </button>
+                    <button
+                      onClick={() => handleNavClick('plp', undefined, 'Drinkware')}
+                      className="w-full text-left px-3 py-2 text-xs font-medium rounded-xl hover:bg-[#2A2E33] text-[#F1F3F4] cursor-pointer transition-colors"
+                    >
+                      Nalgene
+                    </button>
+                    <button
+                      onClick={() => handleNavClick('plp', 'Gemini')}
+                      className="w-full text-left px-3 py-2 text-xs font-medium rounded-xl hover:bg-[#2A2E33] text-[#F1F3F4] cursor-pointer transition-colors"
+                    >
+                      DeepMind
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
           </nav>
 
-          {/* Right Action Icons */}
+          {/* Right Action Icons: Clean Search + Wishlist + Cart */}
           <div className="flex items-center gap-2 sm:gap-3">
-            {/* Search Trigger Bar / Button */}
+            {/* Clean Minimal Search Field - Strictly "Search products..." */}
             <button
               id="header-search-trigger"
               onClick={onOpenSearch}
-              className="flex items-center gap-2 py-2 px-3.5 rounded-full bg-[#EFECE6] hover:bg-[#E5E0D8] text-[#2D2B28] text-xs sm:text-sm font-medium transition-all border border-[#E0DBD2]"
-              aria-label="Search merchandise"
+              className="flex items-center gap-2.5 py-2 px-4 rounded-full bg-[#17191C] hover:bg-[#202428] text-[#9AA0A6] hover:text-white text-xs sm:text-sm font-medium transition-colors border border-[#2A2E33] cursor-pointer"
+              aria-label="Search products"
             >
-              <Search className="w-4 h-4 text-stone-500" />
-              <span className="hidden sm:inline text-stone-500">Search products...</span>
-              <kbd className="hidden md:inline-block px-1.5 py-0.5 text-[10px] font-mono text-stone-500 bg-white rounded shadow-2xs">
-                ⌘K
-              </kbd>
-            </button>
-
-            {/* GA4 Research Dashboard Quick Trigger Button */}
-            <button
-              id="ga4-research-trigger-btn"
-              onClick={onOpenDataHub}
-              title="Open GA4 Research Insights & Live Telemetry"
-              className="p-2.5 rounded-full bg-[#EFECE6] text-[#C85A32] hover:bg-[#C85A32] hover:text-white transition-all duration-200 relative group border border-[#E0DBD2]"
-            >
-              <BarChart3 className="w-4 h-4" />
-              <span className="sr-only">GA4 Research</span>
-              <span className="absolute -bottom-8 right-0 whitespace-nowrap text-[11px] font-mono font-semibold bg-[#1A1A1A] text-white px-2 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
-                GA4 Insights
-              </span>
+              <Search className="w-4 h-4 text-[#9AA0A6] shrink-0" />
+              <span className="text-[#9AA0A6]">Search products…</span>
             </button>
 
             {/* Wishlist Icon with Live Count */}
             <button
               id="header-wishlist-btn"
               onClick={onOpenWishlist}
-              className="p-2.5 rounded-full text-[#2D2B28] hover:bg-[#EFECE6] transition-colors relative"
+              className="p-2.5 rounded-full text-[#BDC1C6] hover:text-white hover:bg-[#17191C] transition-colors relative cursor-pointer"
               aria-label="View saved items"
             >
               <Heart className="w-5 h-5" />
               {wishlistCount > 0 && (
-                <span className="absolute top-1 right-1 w-4 h-4 rounded-full bg-[#C85A32] text-white text-[10px] font-bold flex items-center justify-center animate-scale-in">
+                <span className="absolute top-1 right-1 w-4 h-4 rounded-full bg-[#EA4335] text-white text-[10px] font-bold flex items-center justify-center">
                   {wishlistCount}
                 </span>
               )}
             </button>
 
-            {/* Cart Bag Icon with Live Count & Ripple */}
+            {/* Cart Bag Icon with Live Count */}
             <button
               id="header-cart-btn"
               onClick={onOpenCart}
-              className="flex items-center gap-2 py-2 px-3.5 rounded-full bg-[#1A1A1A] hover:bg-[#C85A32] text-white text-xs sm:text-sm font-semibold transition-all shadow-xs"
+              className="flex items-center gap-2 py-2 px-4 rounded-full bg-[#4285F4] hover:bg-[#3367D6] text-white text-xs sm:text-sm font-semibold transition-all shadow-md shadow-[#4285F4]/20 cursor-pointer"
               aria-label="View shopping bag"
             >
               <div className="relative">
                 <ShoppingBag className="w-4 h-4" />
                 {cartCount > 0 && (
-                  <span className="absolute -top-1.5 -right-2 w-4 h-4 rounded-full bg-[#C85A32] text-white text-[9px] font-bold flex items-center justify-center">
+                  <span className="absolute -top-1.5 -right-2 w-4 h-4 rounded-full bg-[#EA4335] text-white text-[9px] font-bold flex items-center justify-center">
                     {cartCount}
                   </span>
                 )}
@@ -263,69 +319,59 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div className="lg:hidden border-t border-gray-100 bg-white px-4 py-4 space-y-3 animate-fade-in">
+          <div className="lg:hidden border-t border-[#2A2E33] bg-[#0B0D0F] px-4 py-4 space-y-3 animate-fade-in">
             <div className="grid grid-cols-2 gap-2">
               <button
                 onClick={() => handleNavClick('plp', '1998 Retro')}
-                className="p-3 rounded-xl bg-red-50 text-left font-bold text-[#EA4335] text-sm flex items-center justify-between"
+                className="p-3 rounded-xl bg-[#EA4335]/10 border border-[#EA4335]/20 text-left font-bold text-[#EA4335] text-sm flex items-center justify-between cursor-pointer"
               >
-                <span>🔥 1998 Retro</span>
+                <span>1998 Retro</span>
                 <ChevronRight className="w-4 h-4 text-[#EA4335]" />
               </button>
               <button
                 onClick={() => handleNavClick('plp', 'Gemini')}
-                className="p-3 rounded-xl bg-blue-50 text-left font-bold text-[#4285F4] text-sm flex items-center justify-between"
+                className="p-3 rounded-xl bg-[#4285F4]/10 border border-[#4285F4]/20 text-left font-bold text-[#4285F4] text-sm flex items-center justify-between cursor-pointer"
               >
-                <span>✦ Gemini AI</span>
+                <span>Gemini AI</span>
                 <ChevronRight className="w-4 h-4 text-[#4285F4]" />
               </button>
             </div>
 
-            <div className="flex flex-col divide-y divide-gray-100 text-sm font-medium text-gray-800">
-              <button
-                onClick={() => handleNavClick('plp', 'Chrome Dino')}
-                className="py-2.5 text-left flex items-center justify-between"
-              >
-                <span>Chrome Dino Collection</span>
-                <ChevronRight className="w-4 h-4 text-gray-400" />
-              </button>
+            <div className="flex flex-col divide-y divide-[#2A2E33] text-sm font-medium text-[#E8EAED]">
               <button
                 onClick={() => handleNavClick('plp', undefined, 'Apparel')}
-                className="py-2.5 text-left flex items-center justify-between"
+                className="py-3 text-left flex items-center justify-between cursor-pointer hover:text-[#4285F4] transition-colors"
               >
-                <span>Apparel & Hoodies</span>
-                <ChevronRight className="w-4 h-4 text-gray-400" />
+                <span>Apparel</span>
+                <ChevronRight className="w-4 h-4 text-[#9AA0A6]" />
               </button>
               <button
-                onClick={() => handleNavClick('plp', undefined, 'Drinkware')}
-                className="py-2.5 text-left flex items-center justify-between"
+                onClick={() => handleNavClick('plp', undefined, 'Lifestyle')}
+                className="py-3 text-left flex items-center justify-between cursor-pointer hover:text-[#4285F4] transition-colors"
               >
-                <span>Drinkware & Bottles</span>
-                <ChevronRight className="w-4 h-4 text-gray-400" />
+                <span>Lifestyle & Drinkware</span>
+                <ChevronRight className="w-4 h-4 text-[#9AA0A6]" />
               </button>
               <button
-                onClick={() => handleNavClick('plp', undefined, 'Accessories')}
-                className="py-2.5 text-left flex items-center justify-between"
+                onClick={() => handleNavClick('plp', undefined, 'Stationery')}
+                className="py-3 text-left flex items-center justify-between cursor-pointer hover:text-[#4285F4] transition-colors"
               >
-                <span>Accessories & Bags</span>
-                <ChevronRight className="w-4 h-4 text-gray-400" />
+                <span>Stationery & Office</span>
+                <ChevronRight className="w-4 h-4 text-[#9AA0A6]" />
               </button>
               <button
-                onClick={() => handleNavClick('campaign')}
-                className="py-2.5 text-left font-bold text-[#EA4335] flex items-center justify-between"
+                onClick={() => handleNavClick('plp', 'Chrome Dino')}
+                className="py-3 text-left flex items-center justify-between cursor-pointer hover:text-[#4285F4] transition-colors"
               >
-                <span>Retro Rewind Campaign</span>
-                <ChevronRight className="w-4 h-4 text-[#EA4335]" />
+                <span>Chrome Dino</span>
+                <ChevronRight className="w-4 h-4 text-[#9AA0A6]" />
               </button>
               <button
-                onClick={() => {
-                  onOpenDataHub();
-                  setMobileMenuOpen(false);
-                }}
-                className="py-2.5 text-left font-bold text-[#4285F4] flex items-center justify-between"
+                onClick={() => handleNavClick('plp', 'Campus Essentials')}
+                className="py-3 text-left flex items-center justify-between cursor-pointer hover:text-[#4285F4] transition-colors"
               >
-                <span>📊 View GA4 Data Research Hub</span>
-                <ChevronRight className="w-4 h-4 text-[#4285F4]" />
+                <span>Campus Essentials</span>
+                <ChevronRight className="w-4 h-4 text-[#9AA0A6]" />
               </button>
             </div>
           </div>

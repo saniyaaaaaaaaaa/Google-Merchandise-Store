@@ -100,25 +100,25 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
   };
 
   return (
-    <div className="min-h-screen bg-[#F5F2ED] py-8 text-[#1A1A1A]">
+    <div className="min-h-screen bg-[#0B0D0F] py-8 text-[#F1F3F4]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb Row */}
-        <nav className="flex items-center justify-between text-xs text-stone-500 font-medium mb-6">
+        <nav className="flex items-center justify-between text-xs text-[#9AA0A6] font-medium mb-6">
           <div className="flex items-center gap-2 truncate">
-            <button onClick={onNavigateHome} className="hover:text-[#1A1A1A] transition-colors cursor-pointer">
+            <button onClick={onNavigateHome} className="hover:text-white transition-colors cursor-pointer">
               Home
             </button>
             <span>/</span>
-            <button onClick={onNavigateCatalog} className="hover:text-[#1A1A1A] transition-colors cursor-pointer">
+            <button onClick={onNavigateCatalog} className="hover:text-white transition-colors cursor-pointer">
               {product.category}
             </button>
             <span>/</span>
-            <span className="text-[#1A1A1A] font-semibold truncate">{product.name}</span>
+            <span className="text-white font-semibold truncate">{product.name}</span>
           </div>
 
           <button
             onClick={handleShare}
-            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white border border-[#E5E0D8] text-stone-700 hover:bg-[#FAF8F5] text-xs font-semibold shadow-2xs cursor-pointer"
+            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#17191C] border border-[#2A2E33] text-[#9AA0A6] hover:text-white text-xs font-semibold shadow-md cursor-pointer"
           >
             <Share2 className="w-3.5 h-3.5" />
             <span>{copiedLink ? 'Link Copied!' : 'Share'}</span>
@@ -126,7 +126,7 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
         </nav>
 
         {/* Main Product Two-Column Hero */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 bg-[#FAF8F5] rounded-3xl p-6 sm:p-10 border border-[#E5E0D8] shadow-xs mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 bg-[#111315] rounded-3xl p-6 sm:p-10 border border-[#2A2E33] shadow-2xl mb-12">
           {/* Left Column: Image Stage & Thumbnail Gallery */}
           <div className="lg:col-span-7 flex flex-col-reverse sm:flex-row gap-4">
             {/* Thumbnails */}
@@ -137,8 +137,8 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
                   onClick={() => setSelectedImage(imgUrl)}
                   className={`w-18 h-18 sm:w-20 sm:h-20 rounded-2xl bg-white p-2 border transition-all flex items-center justify-center shrink-0 cursor-pointer ${
                     selectedImage === imgUrl
-                      ? 'border-[#C85A32] ring-2 ring-[#C85A32]/30 shadow-xs'
-                      : 'border-[#E5E0D8] hover:border-stone-400 opacity-80 hover:opacity-100'
+                      ? 'border-[#4285F4] ring-2 ring-[#4285F4]/40 shadow-md'
+                      : 'border-[#2A2E33] hover:border-stone-400 opacity-80 hover:opacity-100'
                   }`}
                 >
                   <img src={imgUrl} alt={`${product.name} view ${index + 1}`} className="w-full h-full object-contain" />
@@ -147,7 +147,7 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
             </div>
 
             {/* Main Stage Image */}
-            <div className="flex-1 aspect-square rounded-2xl bg-white border border-[#E5E0D8] p-8 flex items-center justify-center relative overflow-hidden group">
+            <div className="flex-1 aspect-square rounded-2xl bg-white border border-[#2A2E33] p-8 flex items-center justify-center relative overflow-hidden group">
               <img
                 src={selectedImage}
                 alt={product.name}
@@ -156,7 +156,7 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
 
               {/* Badge on main stage */}
               {product.badge && (
-                <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#1A1A1A] text-white text-xs font-bold font-mono uppercase tracking-wider shadow-xs">
+                <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#111315] text-white text-xs font-bold font-mono uppercase tracking-wider shadow-md border border-[#2A2E33]">
                   {product.badge}
                 </span>
               )}
@@ -168,64 +168,64 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
             <div className="space-y-4">
               {/* Brand & Collection */}
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold uppercase tracking-wider text-[#C85A32] font-mono">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#4285F4] font-mono">
                   {product.brand} • {product.collection}
                 </span>
-                <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-[#4A6B53]/15 text-[#4A6B53] font-mono">
+                <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-[#34A853]/15 text-[#81C995] border border-[#34A853]/30 font-mono">
                   {product.inStock ? `In Stock (${product.stockCount || 20} left)` : 'Backorder'}
                 </span>
               </div>
 
               {/* Product Title */}
-              <h1 className="text-2xl sm:text-3xl font-extrabold text-[#1A1A1A] font-display leading-tight">
+              <h1 className="text-2xl sm:text-3xl font-extrabold text-white font-display leading-tight">
                 {product.name}
               </h1>
 
               {/* Rating & Reviews */}
               <div className="flex items-center gap-3 text-xs">
-                <div className="flex items-center text-[#C99436]">
+                <div className="flex items-center text-[#FBBC05]">
                   {[...Array(5)].map((_, i) => (
                     <Star
                       key={i}
                       className={`w-4 h-4 ${
-                        i < Math.floor(product.rating) ? 'fill-current' : 'text-stone-300'
+                        i < Math.floor(product.rating) ? 'fill-current' : 'text-[#2A2E33]'
                       }`}
                     />
                   ))}
-                  <span className="ml-1.5 font-bold text-[#1A1A1A] text-sm">{product.rating.toFixed(1)}</span>
+                  <span className="ml-1.5 font-bold text-white text-sm">{product.rating.toFixed(1)}</span>
                 </div>
-                <span className="text-stone-400">•</span>
-                <span className="text-stone-600 underline cursor-pointer hover:text-[#1A1A1A]">
+                <span className="text-[#2A2E33]">•</span>
+                <span className="text-[#9AA0A6] underline cursor-pointer hover:text-white">
                   {product.reviewCount} verified buyer reviews
                 </span>
               </div>
 
               {/* Pricing */}
               <div className="flex items-baseline gap-3 pt-2">
-                <span className="text-3xl font-extrabold text-[#1A1A1A] font-mono">
+                <span className="text-3xl font-extrabold text-white font-mono">
                   ${product.price.toFixed(2)}
                 </span>
                 {product.originalPrice && (
-                  <span className="text-base text-stone-400 line-through font-mono">
+                  <span className="text-base text-[#9AA0A6] line-through font-mono">
                     ${product.originalPrice.toFixed(2)}
                   </span>
                 )}
                 {product.originalPrice && (
-                  <span className="text-xs font-bold px-2 py-0.5 rounded bg-[#4A6B53] text-white">
+                  <span className="text-xs font-bold px-2 py-0.5 rounded bg-[#34A853] text-white">
                     SAVE ${(product.originalPrice - product.price).toFixed(0)}
                   </span>
                 )}
               </div>
 
-              <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
+              <p className="text-xs sm:text-sm text-[#9AA0A6] leading-relaxed">
                 {product.description}
               </p>
 
               {/* Color Selector */}
-              <div className="space-y-2 pt-2 border-t border-[#E5E0D8]">
+              <div className="space-y-2 pt-2 border-t border-[#2A2E33]">
                 <div className="flex items-center justify-between text-xs">
-                  <span className="font-bold text-[#1A1A1A]">Color:</span>
-                  <span className="text-stone-600 font-medium">{selectedColor.name}</span>
+                  <span className="font-bold text-white">Color:</span>
+                  <span className="text-[#9AA0A6] font-medium">{selectedColor.name}</span>
                 </div>
                 <div className="flex items-center gap-2.5">
                   {product.colors.map(color => (
@@ -237,8 +237,8 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
                       }}
                       className={`w-7 h-7 rounded-full border transition-all flex items-center justify-center cursor-pointer ${
                         selectedColor.name === color.name
-                          ? 'ring-2 ring-offset-2 ring-[#C85A32] scale-110'
-                          : 'border-[#D4CECE] opacity-80 hover:opacity-100'
+                          ? 'ring-2 ring-offset-2 ring-offset-[#111315] ring-[#4285F4] scale-110'
+                          : 'border-[#2A2E33] opacity-80 hover:opacity-100'
                       }`}
                       style={{ backgroundColor: color.hex }}
                     />
@@ -248,12 +248,12 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
 
               {/* Size Selector (If apparel) */}
               {product.sizes && product.sizes.length > 0 && (
-                <div className="space-y-2 pt-2 border-t border-[#E5E0D8]">
+                <div className="space-y-2 pt-2 border-t border-[#2A2E33]">
                   <div className="flex items-center justify-between text-xs">
-                    <span className="font-bold text-[#1A1A1A]">Select Size:</span>
+                    <span className="font-bold text-white">Select Size:</span>
                     <button
                       onClick={() => setShowSizeGuide(true)}
-                      className="text-[#C85A32] hover:underline flex items-center gap-1 font-semibold cursor-pointer"
+                      className="text-[#4285F4] hover:underline flex items-center gap-1 font-semibold cursor-pointer"
                     >
                       <Ruler className="w-3.5 h-3.5" />
                       <span>Size Guide</span>
@@ -266,8 +266,8 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
                         onClick={() => setSelectedSize(size)}
                         className={`py-2 px-1 text-center rounded-xl text-xs font-bold border transition-all cursor-pointer ${
                           selectedSize === size
-                            ? 'bg-[#1A1A1A] text-white border-[#1A1A1A]'
-                            : 'bg-white text-stone-700 border-[#E5E0D8] hover:border-[#C85A32]'
+                            ? 'bg-[#4285F4] text-white border-[#4285F4]'
+                            : 'bg-[#17191C] text-[#9AA0A6] border-[#2A2E33] hover:border-[#4285F4] hover:text-white'
                         }`}
                       >
                         {size}
@@ -278,21 +278,21 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
               )}
 
               {/* Quantity Selector */}
-              <div className="flex items-center gap-4 pt-2 border-t border-[#E5E0D8]">
-                <span className="text-xs font-bold text-[#1A1A1A]">Quantity:</span>
-                <div className="flex items-center border border-[#E5E0D8] rounded-xl bg-white overflow-hidden">
+              <div className="flex items-center gap-4 pt-2 border-t border-[#2A2E33]">
+                <span className="text-xs font-bold text-white">Quantity:</span>
+                <div className="flex items-center border border-[#2A2E33] rounded-xl bg-[#17191C] overflow-hidden">
                   <button
                     onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                    className="px-3 py-1.5 text-stone-600 hover:bg-[#FAF8F5] font-bold cursor-pointer"
+                    className="px-3 py-1.5 text-[#9AA0A6] hover:text-white hover:bg-[#2A2E33] font-bold cursor-pointer"
                   >
                     -
                   </button>
-                  <span className="px-4 py-1.5 text-xs font-bold font-mono text-[#1A1A1A]">
+                  <span className="px-4 py-1.5 text-xs font-bold font-mono text-white">
                     {quantity}
                   </span>
                   <button
                     onClick={() => setQuantity(quantity + 1)}
-                    className="px-3 py-1.5 text-stone-600 hover:bg-[#FAF8F5] font-bold cursor-pointer"
+                    className="px-3 py-1.5 text-[#9AA0A6] hover:text-white hover:bg-[#2A2E33] font-bold cursor-pointer"
                   >
                     +
                   </button>
@@ -301,12 +301,12 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
             </div>
 
             {/* CTAs Row */}
-            <div className="space-y-3 pt-6 border-t border-[#E5E0D8]">
+            <div className="space-y-3 pt-6 border-t border-[#2A2E33]">
               <div className="flex items-center gap-3">
                 <button
                   id="pdp-add-to-bag-btn"
                   onClick={handleAdd}
-                  className="flex-1 py-4 px-6 rounded-2xl bg-[#1A1A1A] hover:bg-[#C85A32] text-white font-bold text-sm sm:text-base shadow-xs transition-all flex items-center justify-center gap-2 cursor-pointer"
+                  className="flex-1 py-4 px-6 rounded-2xl bg-[#4285F4] hover:bg-[#3367D6] text-white font-bold text-sm sm:text-base shadow-md shadow-[#4285F4]/20 transition-all flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <ShoppingBag className="w-5 h-5" />
                   <span>{addedToast ? 'Added to Bag!' : `Add to Bag • $${(product.price * quantity).toFixed(2)}`}</span>
@@ -320,8 +320,8 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
                   }}
                   className={`p-4 rounded-2xl border transition-all cursor-pointer ${
                     isWishlisted
-                      ? 'bg-[#C85A32] text-white border-[#C85A32]'
-                      : 'bg-white hover:bg-[#FAF8F5] text-stone-700 border-[#E5E0D8] hover:text-[#C85A32]'
+                      ? 'bg-[#EA4335] text-white border-[#EA4335]'
+                      : 'bg-[#17191C] hover:bg-[#202428] text-[#9AA0A6] border-[#2A2E33] hover:text-[#EA4335]'
                   }`}
                   aria-label="Wishlist"
                 >
@@ -333,24 +333,24 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
               <button
                 id="pdp-express-checkout-btn"
                 onClick={() => onInstantCheckout(product, selectedColor, selectedSize)}
-                className="w-full py-3.5 px-6 rounded-2xl bg-[#C85A32] hover:bg-[#b04b27] text-white font-bold text-sm shadow-xs transition-all flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full py-3.5 px-6 rounded-2xl bg-[#34A853] hover:bg-[#2D9247] text-white font-bold text-sm shadow-md shadow-[#34A853]/20 transition-all flex items-center justify-center gap-2 cursor-pointer"
               >
-                <Zap className="w-4 h-4 fill-current text-[#F5F2ED]" />
+                <Zap className="w-4 h-4 fill-current text-white" />
                 <span>Instant 1-Click Checkout</span>
               </button>
 
               {/* Trust Badges */}
-              <div className="grid grid-cols-3 gap-2 pt-3 text-[11px] text-stone-500 font-medium">
+              <div className="grid grid-cols-3 gap-2 pt-3 text-[11px] text-[#9AA0A6] font-medium">
                 <div className="flex items-center gap-1.5">
-                  <Truck className="w-3.5 h-3.5 text-[#4A6B53]" />
+                  <Truck className="w-3.5 h-3.5 text-[#34A853]" />
                   <span>Free US Ship $50+</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <ShieldCheck className="w-3.5 h-3.5 text-[#C85A32]" />
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#4285F4]" />
                   <span>Official Google Store</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <RefreshCw className="w-3.5 h-3.5 text-[#C99436]" />
+                  <RefreshCw className="w-3.5 h-3.5 text-[#FBBC05]" />
                   <span>30-Day Free Returns</span>
                 </div>
               </div>
@@ -359,15 +359,15 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
         </div>
 
         {/* Narrative Tabs: Details, Story, Materials, Customer Reviews */}
-        <div className="bg-[#FAF8F5] rounded-3xl p-6 sm:p-10 border border-[#E5E0D8] shadow-xs mb-12">
+        <div className="bg-[#111315] rounded-3xl p-6 sm:p-10 border border-[#2A2E33] shadow-md mb-12">
           {/* Tab Header */}
-          <div className="flex items-center gap-4 sm:gap-8 border-b border-[#E5E0D8] overflow-x-auto pb-3">
+          <div className="flex items-center gap-4 sm:gap-8 border-b border-[#2A2E33] overflow-x-auto pb-3">
             <button
               onClick={() => setActiveTab('details')}
               className={`text-sm font-bold pb-2 transition-colors whitespace-nowrap cursor-pointer ${
                 activeTab === 'details'
-                  ? 'text-[#C85A32] border-b-2 border-[#C85A32]'
-                  : 'text-stone-500 hover:text-[#1A1A1A]'
+                  ? 'text-[#4285F4] border-b-2 border-[#4285F4]'
+                  : 'text-[#9AA0A6] hover:text-white'
               }`}
             >
               Product Details
@@ -376,8 +376,8 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
               onClick={() => setActiveTab('story')}
               className={`text-sm font-bold pb-2 transition-colors whitespace-nowrap cursor-pointer ${
                 activeTab === 'story'
-                  ? 'text-[#C85A32] border-b-2 border-[#C85A32]'
-                  : 'text-stone-500 hover:text-[#1A1A1A]'
+                  ? 'text-[#4285F4] border-b-2 border-[#4285F4]'
+                  : 'text-[#9AA0A6] hover:text-white'
               }`}
             >
               Design Story & Archive
@@ -386,8 +386,8 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
               onClick={() => setActiveTab('materials')}
               className={`text-sm font-bold pb-2 transition-colors whitespace-nowrap cursor-pointer ${
                 activeTab === 'materials'
-                  ? 'text-[#C85A32] border-b-2 border-[#C85A32]'
-                  : 'text-stone-500 hover:text-[#1A1A1A]'
+                  ? 'text-[#4285F4] border-b-2 border-[#4285F4]'
+                  : 'text-[#9AA0A6] hover:text-white'
               }`}
             >
               Materials & Sustainability
@@ -396,8 +396,8 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
               onClick={() => setActiveTab('reviews')}
               className={`text-sm font-bold pb-2 transition-colors whitespace-nowrap cursor-pointer ${
                 activeTab === 'reviews'
-                  ? 'text-[#C85A32] border-b-2 border-[#C85A32]'
-                  : 'text-stone-500 hover:text-[#1A1A1A]'
+                  ? 'text-[#4285F4] border-b-2 border-[#4285F4]'
+                  : 'text-[#9AA0A6] hover:text-white'
               }`}
             >
               Verified Reviews ({product.reviewCount})
@@ -408,11 +408,11 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
           <div className="pt-6">
             {activeTab === 'details' && (
               <div className="space-y-4 max-w-2xl">
-                <h3 className="font-bold text-[#1A1A1A] text-base font-display">Specifications & Features</h3>
+                <h3 className="font-bold text-white text-base font-display">Specifications & Features</h3>
                 <ul className="space-y-2.5">
                   {product.details.map((detail, index) => (
-                    <li key={index} className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600">
-                      <Check className="w-4 h-4 text-[#4A6B53] shrink-0 mt-0.5" />
+                    <li key={index} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#9AA0A6]">
+                      <Check className="w-4 h-4 text-[#34A853] shrink-0 mt-0.5" />
                       <span>{detail}</span>
                     </li>
                   ))}
@@ -422,13 +422,13 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
 
             {activeTab === 'story' && (
               <div className="space-y-4 max-w-2xl">
-                <h3 className="font-bold text-[#1A1A1A] text-base font-display">The Inspiration</h3>
-                <p className="text-sm text-stone-600 leading-relaxed">
+                <h3 className="font-bold text-white text-base font-display">The Inspiration</h3>
+                <p className="text-sm text-[#9AA0A6] leading-relaxed">
                   {product.story || product.description}
                 </p>
-                <div className="p-4 rounded-2xl bg-white border border-[#E5E0D8] flex items-center gap-3">
-                  <Sparkles className="w-5 h-5 text-[#C99436] shrink-0" />
-                  <p className="text-xs text-stone-600">
+                <div className="p-4 rounded-2xl bg-[#17191C] border border-[#2A2E33] flex items-center gap-3">
+                  <Sparkles className="w-5 h-5 text-[#FBBC05] shrink-0" />
+                  <p className="text-xs text-[#9AA0A6]">
                     Officially developed for the Google Merchandise Store in collaboration with campus design teams in Mountain View, California.
                   </p>
                 </div>
@@ -437,18 +437,18 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
 
             {activeTab === 'materials' && (
               <div className="space-y-4 max-w-2xl">
-                <h3 className="font-bold text-[#1A1A1A] text-base font-display">Fabrics & Ecological Commitment</h3>
-                <p className="text-sm text-stone-600">
-                  <strong className="font-bold text-[#1A1A1A]">Composition:</strong> {product.materials || 'Organic cotton and sustainably certified recycled polyester.'}
+                <h3 className="font-bold text-white text-base font-display">Fabrics & Ecological Commitment</h3>
+                <p className="text-sm text-[#9AA0A6]">
+                  <strong className="font-bold text-white">Composition:</strong> {product.materials || 'Organic cotton and sustainably certified recycled polyester.'}
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                  <div className="p-3.5 rounded-xl bg-white border border-[#E5E0D8] flex items-center gap-2.5">
-                    <Leaf className="w-4 h-4 text-[#4A6B53]" />
-                    <span className="text-xs text-stone-800 font-semibold">100% Recyclable Packaging</span>
+                  <div className="p-3.5 rounded-xl bg-[#17191C] border border-[#2A2E33] flex items-center gap-2.5">
+                    <Leaf className="w-4 h-4 text-[#34A853]" />
+                    <span className="text-xs text-white font-semibold">100% Recyclable Packaging</span>
                   </div>
-                  <div className="p-3.5 rounded-xl bg-white border border-[#E5E0D8] flex items-center gap-2.5">
-                    <Package className="w-4 h-4 text-[#C85A32]" />
-                    <span className="text-xs text-stone-800 font-semibold">Carbon-Neutral Freight Shipping</span>
+                  <div className="p-3.5 rounded-xl bg-[#17191C] border border-[#2A2E33] flex items-center gap-2.5">
+                    <Package className="w-4 h-4 text-[#EA4335]" />
+                    <span className="text-xs text-white font-semibold">Carbon-Neutral Freight Shipping</span>
                   </div>
                 </div>
               </div>
@@ -456,40 +456,40 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
 
             {activeTab === 'reviews' && (
               <div className="space-y-6 max-w-3xl">
-                <div className="flex items-center justify-between pb-4 border-b border-[#E5E0D8]">
+                <div className="flex items-center justify-between pb-4 border-b border-[#2A2E33]">
                   <div>
-                    <span className="text-3xl font-extrabold font-mono text-[#1A1A1A]">{product.rating.toFixed(1)}</span>
-                    <span className="text-sm text-stone-500 ml-2">out of 5 stars based on {product.reviewCount} reviews</span>
+                    <span className="text-3xl font-extrabold font-mono text-white">{product.rating.toFixed(1)}</span>
+                    <span className="text-sm text-[#9AA0A6] ml-2">out of 5 stars based on {product.reviewCount} reviews</span>
                   </div>
                 </div>
 
                 <div className="space-y-4">
-                  <div className="p-4 rounded-2xl bg-white border border-[#E5E0D8] space-y-1.5">
+                  <div className="p-4 rounded-2xl bg-[#17191C] border border-[#2A2E33] space-y-1.5">
                     <div className="flex items-center justify-between text-xs">
-                      <span className="font-bold text-[#1A1A1A]">Marcus L. — Verified Buyer</span>
-                      <span className="text-stone-400">Mountain View, CA</span>
+                      <span className="font-bold text-white">Marcus L. — Verified Buyer</span>
+                      <span className="text-[#9AA0A6]">Mountain View, CA</span>
                     </div>
-                    <div className="flex text-[#C99436]">
+                    <div className="flex text-[#FBBC05]">
                       {[...Array(5)].map((_, i) => (
                         <Star key={i} className="w-3.5 h-3.5 fill-current" />
                       ))}
                     </div>
-                    <p className="text-xs sm:text-sm text-stone-700 pt-1">
+                    <p className="text-xs sm:text-sm text-[#9AA0A6] pt-1">
                       &ldquo;The quality on this 1998 capsule is unbelievable. The embroidery and color precision match the archival photos perfectly. Highly recommend!&rdquo;
                     </p>
                   </div>
 
-                  <div className="p-4 rounded-2xl bg-white border border-[#E5E0D8] space-y-1.5">
+                  <div className="p-4 rounded-2xl bg-[#17191C] border border-[#2A2E33] space-y-1.5">
                     <div className="flex items-center justify-between text-xs">
-                      <span className="font-bold text-[#1A1A1A]">Elena R. — Software Engineer</span>
-                      <span className="text-stone-400">New York, NY</span>
+                      <span className="font-bold text-white">Elena R. — Software Engineer</span>
+                      <span className="text-[#9AA0A6]">New York, NY</span>
                     </div>
-                    <div className="flex text-[#C99436]">
+                    <div className="flex text-[#FBBC05]">
                       {[...Array(5)].map((_, i) => (
                         <Star key={i} className="w-3.5 h-3.5 fill-current" />
                       ))}
                     </div>
-                    <p className="text-xs sm:text-sm text-stone-700 pt-1">
+                    <p className="text-xs sm:text-sm text-[#9AA0A6] pt-1">
                       &ldquo;Shipped in 2 days from the Bay Area. Fits true to size and survived multiple machine washes with zero fading.&rdquo;
                     </p>
                   </div>
@@ -501,17 +501,17 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
 
         {/* "Complete the Look" Bundle Widget */}
         {bundleItems.length > 0 && (
-          <div className="bg-[#1A1A1A] text-white rounded-3xl p-6 sm:p-10 shadow-xs border border-[#2A2A2A] mb-12">
+          <div className="bg-[#111315] text-white rounded-3xl p-6 sm:p-10 shadow-md border border-[#2A2E33] mb-12">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
               <div className="space-y-2 max-w-md">
-                <div className="text-xs font-mono uppercase font-bold text-[#C99436] flex items-center gap-1.5">
+                <div className="text-xs font-mono uppercase font-bold text-[#FBBC05] flex items-center gap-1.5">
                   <Sparkles className="w-3.5 h-3.5" />
                   <span>Curated Style Bundle</span>
                 </div>
                 <h3 className="text-2xl font-bold font-display">
                   Complete the {product.collection} Look
                 </h3>
-                <p className="text-xs text-stone-300">
+                <p className="text-xs text-[#9AA0A6]">
                   Pair this with authentic companion pieces from the same collection and save on shipping.
                 </p>
               </div>
@@ -519,12 +519,12 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
               {/* Bundle Items Thumbnails + 1-Click CTA */}
               <div className="flex flex-wrap items-center gap-4">
                 <div className="flex items-center gap-2">
-                  <div className="w-16 h-16 rounded-xl bg-white/10 p-2 flex items-center justify-center border border-white/10">
+                  <div className="w-16 h-16 rounded-xl bg-white p-1.5 flex items-center justify-center border border-[#2A2E33]">
                     <img src={product.image} alt={product.name} className="w-full h-full object-contain" />
                   </div>
-                  <Plus className="w-4 h-4 text-stone-400" />
+                  <Plus className="w-4 h-4 text-[#9AA0A6]" />
                   {bundleItems.map(item => (
-                    <div key={item.id} className="w-16 h-16 rounded-xl bg-white/10 p-2 flex items-center justify-center border border-white/10">
+                    <div key={item.id} className="w-16 h-16 rounded-xl bg-white p-1.5 flex items-center justify-center border border-[#2A2E33]">
                       <img src={item.image} alt={item.name} className="w-full h-full object-contain" />
                     </div>
                   ))}
@@ -533,7 +533,7 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
                 <button
                   id="bundle-add-all-btn"
                   onClick={handleAddBundle}
-                  className="px-6 py-3.5 rounded-2xl bg-[#C85A32] hover:bg-[#b04b27] text-white font-bold text-xs sm:text-sm shadow-xs transition-all flex items-center gap-2 cursor-pointer"
+                  className="px-6 py-3.5 rounded-2xl bg-[#4285F4] hover:bg-[#3367D6] text-white font-bold text-xs sm:text-sm shadow-md shadow-[#4285F4]/20 transition-all flex items-center gap-2 cursor-pointer"
                 >
                   <ShoppingBag className="w-4 h-4" />
                   <span>
@@ -550,12 +550,12 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
         {relatedProducts.length > 0 && (
           <div className="space-y-6">
             <div className="flex items-center justify-between">
-              <h2 className="text-2xl font-extrabold text-[#1A1A1A] font-display">
+              <h2 className="text-2xl font-extrabold text-white font-display">
                 You might also love
               </h2>
               <button
                 onClick={onNavigateCatalog}
-                className="text-xs font-bold text-[#C85A32] hover:underline flex items-center gap-1 cursor-pointer"
+                className="text-xs font-bold text-[#4285F4] hover:underline flex items-center gap-1 cursor-pointer"
               >
                 <span>View all merchandise</span>
                 <ChevronRight className="w-3.5 h-3.5" />
@@ -582,35 +582,35 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
 
       {/* Size Guide Modal */}
       {showSizeGuide && (
-        <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-[#FAF8F5] rounded-3xl max-w-lg w-full p-6 sm:p-8 space-y-4 border border-[#E5E0D8] shadow-2xl">
-            <div className="flex items-center justify-between pb-3 border-b border-[#E5E0D8]">
-              <h3 className="font-bold text-[#1A1A1A] text-lg font-display">Unisex Sizing Chart (Inches)</h3>
-              <button onClick={() => setShowSizeGuide(false)} className="text-stone-400 hover:text-[#1A1A1A] cursor-pointer">
+        <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-xs flex items-center justify-center p-4">
+          <div className="bg-[#111315] rounded-3xl max-w-lg w-full p-6 sm:p-8 space-y-4 border border-[#2A2E33] shadow-2xl">
+            <div className="flex items-center justify-between pb-3 border-b border-[#2A2E33]">
+              <h3 className="font-bold text-white text-lg font-display">Unisex Sizing Chart (Inches)</h3>
+              <button onClick={() => setShowSizeGuide(false)} className="text-[#9AA0A6] hover:text-white cursor-pointer">
                 ✕
               </button>
             </div>
             <table className="w-full text-xs text-left">
               <thead>
-                <tr className="border-b border-[#E5E0D8] text-stone-400 font-mono uppercase">
+                <tr className="border-b border-[#2A2E33] text-[#9AA0A6] font-mono uppercase">
                   <th className="py-2">Size</th>
                   <th className="py-2">Chest</th>
                   <th className="py-2">Length</th>
                   <th className="py-2">Sleeve</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#E5E0D8] font-medium text-stone-700">
-                <tr><td className="py-2 font-bold text-[#1A1A1A]">XS</td><td>34 - 36</td><td>27</td><td>33.5</td></tr>
-                <tr><td className="py-2 font-bold text-[#1A1A1A]">S</td><td>36 - 38</td><td>28</td><td>34.5</td></tr>
-                <tr><td className="py-2 font-bold text-[#1A1A1A]">M</td><td>39 - 41</td><td>29</td><td>35.5</td></tr>
-                <tr><td className="py-2 font-bold text-[#1A1A1A]">L</td><td>42 - 44</td><td>30</td><td>36.5</td></tr>
-                <tr><td className="py-2 font-bold text-[#1A1A1A]">XL</td><td>45 - 48</td><td>31</td><td>37.5</td></tr>
-                <tr><td className="py-2 font-bold text-[#1A1A1A]">2XL</td><td>49 - 52</td><td>32</td><td>38.5</td></tr>
+              <tbody className="divide-y divide-[#2A2E33] font-medium text-[#9AA0A6]">
+                <tr><td className="py-2 font-bold text-white">XS</td><td>34 - 36</td><td>27</td><td>33.5</td></tr>
+                <tr><td className="py-2 font-bold text-white">S</td><td>36 - 38</td><td>28</td><td>34.5</td></tr>
+                <tr><td className="py-2 font-bold text-white">M</td><td>39 - 41</td><td>29</td><td>35.5</td></tr>
+                <tr><td className="py-2 font-bold text-white">L</td><td>42 - 44</td><td>30</td><td>36.5</td></tr>
+                <tr><td className="py-2 font-bold text-white">XL</td><td>45 - 48</td><td>31</td><td>37.5</td></tr>
+                <tr><td className="py-2 font-bold text-white">2XL</td><td>49 - 52</td><td>32</td><td>38.5</td></tr>
               </tbody>
             </table>
             <button
               onClick={() => setShowSizeGuide(false)}
-              className="w-full py-3 rounded-xl bg-[#1A1A1A] hover:bg-[#C85A32] text-white text-xs font-bold transition-colors cursor-pointer shadow-xs"
+              className="w-full py-3 rounded-xl bg-[#4285F4] hover:bg-[#3367D6] text-white text-xs font-bold transition-colors cursor-pointer shadow-md"
             >
               Got it
             </button>

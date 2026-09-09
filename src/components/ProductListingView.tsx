@@ -130,11 +130,11 @@ export const ProductListingView: React.FC<ProductListingViewProps> = ({
   };
 
   return (
-    <div className="min-h-screen bg-[#F5F2ED] py-8 text-[#1A1A1A]">
+    <div className="min-h-screen bg-[#0B0D0F] py-8 text-[#F1F3F4]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb Navigation */}
-        <nav className="flex items-center gap-2 text-xs text-stone-500 font-medium mb-6">
-          <button onClick={onNavigateHome} className="hover:text-[#1A1A1A] transition-colors cursor-pointer">
+        <nav className="flex items-center gap-2 text-xs text-[#9AA0A6] font-medium mb-6">
+          <button onClick={onNavigateHome} className="hover:text-white transition-colors cursor-pointer">
             Home
           </button>
           <span>/</span>
@@ -142,33 +142,33 @@ export const ProductListingView: React.FC<ProductListingViewProps> = ({
           {filters.collection && (
             <>
               <span>/</span>
-              <span className="text-[#1A1A1A] font-semibold">{filters.collection}</span>
+              <span className="text-white font-semibold">{filters.collection}</span>
             </>
           )}
           {filters.category && (
             <>
               <span>/</span>
-              <span className="text-[#1A1A1A] font-semibold">{filters.category}</span>
+              <span className="text-white font-semibold">{filters.category}</span>
             </>
           )}
         </nav>
 
         {/* Page Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 pb-6 border-b border-[#E5E0D8] gap-4">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 pb-6 border-b border-[#2A2E33] gap-4">
           <div>
-            <div className="flex items-center gap-2 text-xs font-mono uppercase font-bold text-[#C85A32] mb-1">
+            <div className="flex items-center gap-2 text-xs font-mono uppercase font-bold text-[#4285F4] mb-1">
               <span>Catalog & Discovery</span>
               <span>•</span>
               <span>{filteredProducts.length} Items</span>
             </div>
-            <h1 className="text-3xl sm:text-4xl font-extrabold text-[#1A1A1A] font-display">
+            <h1 className="text-3xl sm:text-4xl font-extrabold text-white font-display">
               {filters.collection
                 ? filters.collection
                 : filters.category
                 ? filters.category
                 : 'All Official Merchandise'}
             </h1>
-            <p className="text-sm text-stone-600 max-w-xl mt-1">
+            <p className="text-sm text-[#9AA0A6] max-w-xl mt-1">
               Official Google gear, retro capsules, Chrome Dino collectibles, and developer essentials.
             </p>
           </div>
@@ -179,18 +179,18 @@ export const ProductListingView: React.FC<ProductListingViewProps> = ({
             <button
               id="mobile-filter-btn"
               onClick={() => setMobileFilterOpen(!mobileFilterOpen)}
-              className="lg:hidden flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white border border-[#E5E0D8] text-xs font-bold text-stone-800 shadow-2xs cursor-pointer"
+              className="lg:hidden flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#17191C] border border-[#2A2E33] text-xs font-bold text-white shadow-md cursor-pointer"
             >
-              <SlidersHorizontal className="w-4 h-4 text-stone-600" />
+              <SlidersHorizontal className="w-4 h-4 text-[#9AA0A6]" />
               <span>Filters {activeFiltersCount > 0 && `(${activeFiltersCount})`}</span>
             </button>
 
             {/* Grid Column Selector (Desktop) */}
-            <div className="hidden sm:flex items-center gap-1 bg-white p-1 rounded-xl border border-[#E5E0D8]">
+            <div className="hidden sm:flex items-center gap-1 bg-[#17191C] p-1 rounded-xl border border-[#2A2E33]">
               <button
                 onClick={() => setColumns(3)}
                 className={`p-1.5 rounded-lg transition-colors cursor-pointer ${
-                  columns === 3 ? 'bg-[#F5F2ED] text-[#1A1A1A]' : 'text-stone-400 hover:text-stone-700'
+                  columns === 3 ? 'bg-[#2A2E33] text-white' : 'text-[#9AA0A6] hover:text-white'
                 }`}
                 title="3 columns"
               >
@@ -199,7 +199,7 @@ export const ProductListingView: React.FC<ProductListingViewProps> = ({
               <button
                 onClick={() => setColumns(4)}
                 className={`p-1.5 rounded-lg transition-colors cursor-pointer ${
-                  columns === 4 ? 'bg-[#F5F2ED] text-[#1A1A1A]' : 'text-stone-400 hover:text-stone-700'
+                  columns === 4 ? 'bg-[#2A2E33] text-white' : 'text-[#9AA0A6] hover:text-white'
                 }`}
                 title="4 columns"
               >
@@ -213,7 +213,7 @@ export const ProductListingView: React.FC<ProductListingViewProps> = ({
                 id="sort-select"
                 value={filters.sortBy}
                 onChange={(e) => setFilters(prev => ({ ...prev, sortBy: e.target.value as any }))}
-                className="appearance-none bg-white border border-[#E5E0D8] rounded-xl px-4 py-2.5 pr-8 text-xs font-semibold text-stone-800 focus:outline-none focus:ring-1 focus:ring-[#C85A32] shadow-2xs cursor-pointer"
+                className="appearance-none bg-[#17191C] border border-[#2A2E33] rounded-xl px-4 py-2.5 pr-8 text-xs font-semibold text-white focus:outline-none focus:ring-1 focus:ring-[#4285F4] shadow-md cursor-pointer"
               >
                 <option value="featured">Featured Picks</option>
                 <option value="bestselling">Best Selling</option>
@@ -222,7 +222,7 @@ export const ProductListingView: React.FC<ProductListingViewProps> = ({
                 <option value="rating">Highest Rated</option>
                 <option value="newest">Newest Drops</option>
               </select>
-              <ChevronDown className="w-3.5 h-3.5 text-stone-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <ChevronDown className="w-3.5 h-3.5 text-[#9AA0A6] absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
             </div>
           </div>
         </div>
@@ -230,50 +230,50 @@ export const ProductListingView: React.FC<ProductListingViewProps> = ({
         {/* Active Filter Badges */}
         {activeFiltersCount > 0 && (
           <div className="flex flex-wrap items-center gap-2 mb-6">
-            <span className="text-xs font-bold text-stone-400 uppercase font-mono mr-1">
+            <span className="text-xs font-bold text-[#9AA0A6] uppercase font-mono mr-1">
               Active:
             </span>
 
             {filters.collection && (
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#C85A32]/10 text-[#C85A32] text-xs font-bold">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#4285F4]/15 border border-[#4285F4]/40 text-[#8AB4F8] text-xs font-bold">
                 Collection: {filters.collection}
-                <button onClick={() => setFilters(p => ({ ...p, collection: null }))} className="cursor-pointer">
+                <button onClick={() => setFilters(p => ({ ...p, collection: null }))} className="cursor-pointer hover:text-white">
                   <X className="w-3 h-3" />
                 </button>
               </span>
             )}
 
             {filters.category && (
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#4A6B53]/10 text-[#4A6B53] text-xs font-bold">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#34A853]/15 border border-[#34A853]/40 text-[#81C995] text-xs font-bold">
                 Category: {filters.category}
-                <button onClick={() => setFilters(p => ({ ...p, category: null }))} className="cursor-pointer">
+                <button onClick={() => setFilters(p => ({ ...p, category: null }))} className="cursor-pointer hover:text-white">
                   <X className="w-3 h-3" />
                 </button>
               </span>
             )}
 
             {filters.colors.map(color => (
-              <span key={color} className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-[#E5E0D8] text-stone-800 text-xs font-medium">
+              <span key={color} className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#17191C] border border-[#2A2E33] text-white text-xs font-medium">
                 {color}
-                <button onClick={() => toggleColor(color)} className="cursor-pointer">
+                <button onClick={() => toggleColor(color)} className="cursor-pointer hover:text-white">
                   <X className="w-3 h-3" />
                 </button>
               </span>
             ))}
 
             {filters.sizes.map(size => (
-              <span key={size} className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-[#E5E0D8] text-stone-800 text-xs font-medium">
+              <span key={size} className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#17191C] border border-[#2A2E33] text-white text-xs font-medium">
                 Size: {size}
-                <button onClick={() => toggleSize(size)} className="cursor-pointer">
+                <button onClick={() => toggleSize(size)} className="cursor-pointer hover:text-white">
                   <X className="w-3 h-3" />
                 </button>
               </span>
             ))}
 
             {filters.inStockOnly && (
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#4A6B53]/15 text-[#4A6B53] text-xs font-semibold">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#34A853]/15 border border-[#34A853]/40 text-[#81C995] text-xs font-semibold">
                 In Stock Only
-                <button onClick={() => setFilters(p => ({ ...p, inStockOnly: false }))} className="cursor-pointer">
+                <button onClick={() => setFilters(p => ({ ...p, inStockOnly: false }))} className="cursor-pointer hover:text-white">
                   <X className="w-3 h-3" />
                 </button>
               </span>
@@ -281,7 +281,7 @@ export const ProductListingView: React.FC<ProductListingViewProps> = ({
 
             <button
               onClick={clearAllFilters}
-              className="text-xs font-bold text-stone-500 hover:text-[#1A1A1A] underline ml-2 cursor-pointer"
+              className="text-xs font-bold text-[#9AA0A6] hover:text-white underline ml-2 cursor-pointer"
             >
               Clear All ({activeFiltersCount})
             </button>
@@ -292,13 +292,13 @@ export const ProductListingView: React.FC<ProductListingViewProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Desktop Filter Sidebar */}
           <aside className={`lg:col-span-3 space-y-6 ${mobileFilterOpen ? 'block' : 'hidden lg:block'}`}>
-            <div className="bg-[#FAF8F5] rounded-2xl p-6 border border-[#E5E0D8] shadow-xs space-y-6">
-              <div className="flex items-center justify-between pb-4 border-b border-[#E5E0D8]">
-                <h3 className="font-bold text-[#1A1A1A] text-sm uppercase tracking-wider font-mono">
+            <div className="bg-[#111315] rounded-2xl p-6 border border-[#2A2E33] shadow-md space-y-6">
+              <div className="flex items-center justify-between pb-4 border-b border-[#2A2E33]">
+                <h3 className="font-bold text-white text-sm uppercase tracking-wider font-mono">
                   Filters
                 </h3>
                 {activeFiltersCount > 0 && (
-                  <button onClick={clearAllFilters} className="text-xs font-semibold text-[#C85A32] hover:underline cursor-pointer">
+                  <button onClick={clearAllFilters} className="text-xs font-semibold text-[#4285F4] hover:underline cursor-pointer">
                     Reset
                   </button>
                 )}
@@ -306,7 +306,7 @@ export const ProductListingView: React.FC<ProductListingViewProps> = ({
 
               {/* Collections Filter */}
               <div className="space-y-2.5">
-                <h4 className="text-xs font-bold uppercase text-stone-400 font-mono tracking-wider">
+                <h4 className="text-xs font-bold uppercase text-[#9AA0A6] font-mono tracking-wider">
                   Featured Collections
                 </h4>
                 <div className="space-y-1.5">
@@ -316,12 +316,12 @@ export const ProductListingView: React.FC<ProductListingViewProps> = ({
                       onClick={() => setFilters(prev => ({ ...prev, collection: prev.collection === col.id ? null : col.id }))}
                       className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
                         filters.collection === col.id
-                          ? 'bg-[#1A1A1A] text-white'
-                          : 'text-stone-600 hover:bg-white'
+                          ? 'bg-[#4285F4] text-white shadow-md'
+                          : 'text-[#9AA0A6] hover:bg-[#17191C] hover:text-white'
                       }`}
                     >
                       <span>{col.name}</span>
-                      <span className={`text-[10px] font-mono ${filters.collection === col.id ? 'text-stone-300' : 'text-stone-400'}`}>
+                      <span className={`text-[10px] font-mono ${filters.collection === col.id ? 'text-white/90' : 'text-[#9AA0A6]'}`}>
                         {col.count}
                       </span>
                     </button>
@@ -330,8 +330,8 @@ export const ProductListingView: React.FC<ProductListingViewProps> = ({
               </div>
 
               {/* Category Filter */}
-              <div className="space-y-2.5 pt-4 border-t border-[#E5E0D8]">
-                <h4 className="text-xs font-bold uppercase text-stone-400 font-mono tracking-wider">
+              <div className="space-y-2.5 pt-4 border-t border-[#2A2E33]">
+                <h4 className="text-xs font-bold uppercase text-[#9AA0A6] font-mono tracking-wider">
                   Category
                 </h4>
                 <div className="space-y-1.5">
@@ -341,12 +341,12 @@ export const ProductListingView: React.FC<ProductListingViewProps> = ({
                       onClick={() => setFilters(prev => ({ ...prev, category: prev.category === cat.id ? null : cat.id }))}
                       className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
                         filters.category === cat.id
-                          ? 'bg-[#C85A32] text-white'
-                          : 'text-stone-600 hover:bg-white'
+                          ? 'bg-[#EA4335] text-white shadow-md'
+                          : 'text-[#9AA0A6] hover:bg-[#17191C] hover:text-white'
                       }`}
                     >
                       <span>{cat.name}</span>
-                      <span className={`text-[10px] font-mono ${filters.category === cat.id ? 'text-white/80' : 'text-stone-400'}`}>
+                      <span className={`text-[10px] font-mono ${filters.category === cat.id ? 'text-white/90' : 'text-[#9AA0A6]'}`}>
                         {cat.count}
                       </span>
                     </button>
@@ -355,10 +355,10 @@ export const ProductListingView: React.FC<ProductListingViewProps> = ({
               </div>
 
               {/* Price Range Slider */}
-              <div className="space-y-3 pt-4 border-t border-[#E5E0D8]">
+              <div className="space-y-3 pt-4 border-t border-[#2A2E33]">
                 <div className="flex items-center justify-between text-xs">
-                  <span className="font-bold uppercase text-stone-400 font-mono tracking-wider">Max Price</span>
-                  <span className="font-bold font-mono text-[#1A1A1A]">${filters.maxPrice}</span>
+                  <span className="font-bold uppercase text-[#9AA0A6] font-mono tracking-wider">Max Price</span>
+                  <span className="font-bold font-mono text-white">${filters.maxPrice}</span>
                 </div>
                 <input
                   type="range"
@@ -367,17 +367,17 @@ export const ProductListingView: React.FC<ProductListingViewProps> = ({
                   step="5"
                   value={filters.maxPrice}
                   onChange={(e) => setFilters(prev => ({ ...prev, maxPrice: Number(e.target.value) }))}
-                  className="w-full accent-[#C85A32] cursor-pointer"
+                  className="w-full accent-[#4285F4] cursor-pointer"
                 />
-                <div className="flex justify-between text-[10px] font-mono text-stone-400">
+                <div className="flex justify-between text-[10px] font-mono text-[#9AA0A6]">
                   <span>$10</span>
                   <span>$150</span>
                 </div>
               </div>
 
               {/* Color Swatches */}
-              <div className="space-y-2.5 pt-4 border-t border-[#E5E0D8]">
-                <h4 className="text-xs font-bold uppercase text-stone-400 font-mono tracking-wider">
+              <div className="space-y-2.5 pt-4 border-t border-[#2A2E33]">
+                <h4 className="text-xs font-bold uppercase text-[#9AA0A6] font-mono tracking-wider">
                   Colors
                 </h4>
                 <div className="flex flex-wrap gap-2">
@@ -390,8 +390,8 @@ export const ProductListingView: React.FC<ProductListingViewProps> = ({
                         title={name}
                         className={`w-6 h-6 rounded-full border transition-all flex items-center justify-center cursor-pointer ${
                           isSelected
-                            ? 'ring-2 ring-[#C85A32] ring-offset-2 scale-110'
-                            : 'border-[#D4CECE] opacity-85 hover:opacity-100'
+                            ? 'ring-2 ring-[#4285F4] ring-offset-2 ring-offset-[#111315] scale-110'
+                            : 'border-[#2A2E33] opacity-85 hover:opacity-100'
                         }`}
                         style={{ backgroundColor: hex }}
                       >
@@ -403,8 +403,8 @@ export const ProductListingView: React.FC<ProductListingViewProps> = ({
               </div>
 
               {/* Size Selector */}
-              <div className="space-y-2.5 pt-4 border-t border-[#E5E0D8]">
-                <h4 className="text-xs font-bold uppercase text-stone-400 font-mono tracking-wider">
+              <div className="space-y-2.5 pt-4 border-t border-[#2A2E33]">
+                <h4 className="text-xs font-bold uppercase text-[#9AA0A6] font-mono tracking-wider">
                   Apparel Size
                 </h4>
                 <div className="grid grid-cols-3 gap-1.5">
@@ -416,8 +416,8 @@ export const ProductListingView: React.FC<ProductListingViewProps> = ({
                         onClick={() => toggleSize(size)}
                         className={`py-1.5 rounded-lg text-xs font-semibold border transition-all cursor-pointer ${
                           isSelected
-                            ? 'bg-[#1A1A1A] text-white border-[#1A1A1A]'
-                            : 'bg-white text-stone-700 border-[#E5E0D8] hover:border-[#C85A32]'
+                            ? 'bg-[#4285F4] text-white border-[#4285F4]'
+                            : 'bg-[#17191C] text-[#9AA0A6] border-[#2A2E33] hover:border-[#4285F4] hover:text-white'
                         }`}
                       >
                         {size}
@@ -428,13 +428,13 @@ export const ProductListingView: React.FC<ProductListingViewProps> = ({
               </div>
 
               {/* Stock Toggle */}
-              <div className="pt-4 border-t border-[#E5E0D8]">
-                <label className="flex items-center gap-2 text-xs font-semibold text-stone-700 cursor-pointer select-none">
+              <div className="pt-4 border-t border-[#2A2E33]">
+                <label className="flex items-center gap-2 text-xs font-semibold text-[#9AA0A6] hover:text-white cursor-pointer select-none">
                   <input
                     type="checkbox"
                     checked={filters.inStockOnly}
                     onChange={(e) => setFilters(prev => ({ ...prev, inStockOnly: e.target.checked }))}
-                    className="rounded text-[#C85A32] focus:ring-[#C85A32] accent-[#C85A32]"
+                    className="rounded text-[#4285F4] focus:ring-[#4285F4] accent-[#4285F4]"
                   />
                   <span>In Stock Only</span>
                 </label>
@@ -460,19 +460,19 @@ export const ProductListingView: React.FC<ProductListingViewProps> = ({
                 ))}
               </div>
             ) : (
-              <div className="py-16 px-4 text-center bg-[#FAF8F5] rounded-3xl border border-[#E5E0D8]">
-                <div className="w-16 h-16 rounded-full bg-white mx-auto flex items-center justify-center text-stone-400 mb-4 border border-[#E5E0D8]">
+              <div className="py-16 px-4 text-center bg-[#111315] rounded-3xl border border-[#2A2E33]">
+                <div className="w-16 h-16 rounded-full bg-[#17191C] mx-auto flex items-center justify-center text-[#9AA0A6] mb-4 border border-[#2A2E33]">
                   <RefreshCw className="w-6 h-6" />
                 </div>
-                <h3 className="text-lg font-bold text-[#1A1A1A] font-display">
+                <h3 className="text-lg font-bold text-white font-display">
                   No merchandise matched your filters
                 </h3>
-                <p className="text-xs text-stone-500 max-w-sm mx-auto mt-1 mb-6">
+                <p className="text-xs text-[#9AA0A6] max-w-sm mx-auto mt-1 mb-6">
                   Try clearing some filter tags or selecting another collection like 1998 Retro or Gemini.
                 </p>
                 <button
                   onClick={clearAllFilters}
-                  className="px-6 py-2.5 rounded-xl bg-[#1A1A1A] hover:bg-[#C85A32] text-white text-xs font-bold transition-colors cursor-pointer shadow-xs"
+                  className="px-6 py-2.5 rounded-xl bg-[#4285F4] hover:bg-[#3367D6] text-white text-xs font-bold transition-colors cursor-pointer shadow-md shadow-[#4285F4]/20"
                 >
                   Clear All Filters
                 </button>

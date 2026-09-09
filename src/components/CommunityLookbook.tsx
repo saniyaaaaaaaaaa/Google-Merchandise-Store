@@ -25,7 +25,7 @@ export const CommunityLookbook: React.FC<CommunityLookbookProps> = ({
     .filter((p): p is Product => Boolean(p));
 
   return (
-    <section className="py-14 sm:py-20 bg-[#F8F7F4] border-b border-[#E5E0D8] overflow-hidden">
+    <section className="py-14 sm:py-20 bg-[#0B0D0F] border-b border-[#2A2E33] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-10 gap-4">
@@ -34,10 +34,10 @@ export const CommunityLookbook: React.FC<CommunityLookbookProps> = ({
               <Camera className="w-3.5 h-3.5" />
               <span>Campus & Community Style</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#202124] tracking-tight font-display">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight font-display">
               See it in the wild.
             </h2>
-            <p className="text-sm sm:text-base text-[#5F6368] max-w-xl mt-1">
+            <p className="text-sm sm:text-base text-[#9AA0A6] max-w-xl mt-1">
               Real outfits and setups spotted across Google offices, tech meetups, and city streets.
             </p>
           </div>
@@ -53,11 +53,11 @@ export const CommunityLookbook: React.FC<CommunityLookbookProps> = ({
                 }}
                 className={`px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all flex items-center gap-1.5 cursor-pointer ${
                   activeLookIndex === idx
-                    ? 'bg-[#202124] text-white shadow-xs'
-                    : 'bg-white hover:bg-[#F8F7F4] text-[#5F6368] border border-[#DADCE0]'
+                    ? 'bg-[#17191C] text-white border border-[#34A853] shadow-md'
+                    : 'bg-[#111315] hover:bg-[#17191C] text-[#9AA0A6] hover:text-white border border-[#2A2E33]'
                 }`}
               >
-                <MapPin className={`w-3 h-3 ${activeLookIndex === idx ? 'text-[#EA4335]' : 'text-[#70757A]'}`} />
+                <MapPin className={`w-3 h-3 ${activeLookIndex === idx ? 'text-[#EA4335]' : 'text-[#9AA0A6]'}`} />
                 <span>{look.city}</span>
               </button>
             ))}
@@ -65,7 +65,7 @@ export const CommunityLookbook: React.FC<CommunityLookbookProps> = ({
         </div>
 
         {/* Split Editorial Lookbook Canvas */}
-        <div className="rounded-3xl bg-white border border-[#E5E0D8] p-6 sm:p-8 lg:p-10 shadow-xs">
+        <div className="rounded-3xl bg-[#111315] border border-[#2A2E33] p-6 sm:p-8 lg:p-10 shadow-2xl">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentLook.id}
@@ -76,7 +76,7 @@ export const CommunityLookbook: React.FC<CommunityLookbookProps> = ({
               className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
             >
               {/* Left: Big Lifestyle Photo Stage */}
-              <div className="lg:col-span-7 relative rounded-2xl overflow-hidden aspect-4/3 sm:aspect-16/10 shadow-md group">
+              <div className="lg:col-span-7 relative rounded-2xl overflow-hidden aspect-4/3 sm:aspect-16/10 shadow-md group border border-[#2A2E33]">
                 <img
                   src={currentLook.lifestyleImage}
                   alt={currentLook.title}
@@ -85,7 +85,7 @@ export const CommunityLookbook: React.FC<CommunityLookbookProps> = ({
                 />
 
                 {/* Gradient Overlay & Tag */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent pointer-events-none" />
 
                 <div className="absolute bottom-5 left-5 right-5 text-white pointer-events-auto">
                   <div className="flex items-center gap-2 text-xs font-mono text-[#E8EAED] mb-1">
@@ -102,14 +102,14 @@ export const CommunityLookbook: React.FC<CommunityLookbookProps> = ({
 
               {/* Right: Tagged Merchandise Cards ("Shop The Look") */}
               <div className="lg:col-span-5 space-y-4">
-                <div className="flex items-center justify-between pb-2 border-b border-[#E5E0D8]">
+                <div className="flex items-center justify-between pb-2 border-b border-[#2A2E33]">
                   <div className="flex items-center gap-2">
                     <ShoppingBag className="w-4 h-4 text-[#4285F4]" />
-                    <span className="text-xs font-bold uppercase tracking-wider text-[#202124] font-mono">
+                    <span className="text-xs font-bold uppercase tracking-wider text-white font-mono">
                       Shop The Outfit ({taggedProductItems.length} Pieces)
                     </span>
                   </div>
-                  <span className="text-xs text-[#70757A] font-medium">
+                  <span className="text-xs text-[#9AA0A6] font-medium">
                     Click to inspect
                   </span>
                 </div>
@@ -124,10 +124,10 @@ export const CommunityLookbook: React.FC<CommunityLookbookProps> = ({
                         trackSelectItem(product, `Lookbook: ${currentLook.title}`);
                         onSelectProduct(product);
                       }}
-                      className="group flex items-center justify-between p-3.5 rounded-2xl bg-[#F8F7F4] border border-[#E5E0D8] hover:border-[#4285F4] hover:bg-white hover:shadow-md transition-all cursor-pointer"
+                      className="group flex items-center justify-between p-3.5 rounded-2xl bg-[#17191C] border border-[#2A2E33] hover:border-[#4285F4] hover:shadow-lg transition-all cursor-pointer"
                     >
                       <div className="flex items-center gap-3.5">
-                        <div className="w-14 h-14 rounded-xl bg-white p-1.5 flex items-center justify-center shrink-0 border border-[#EFECE6]">
+                        <div className="w-14 h-14 rounded-xl bg-white p-1.5 flex items-center justify-center shrink-0 border border-[#2A2E33]">
                           <img
                             src={product.image}
                             alt={product.name}
@@ -136,13 +136,13 @@ export const CommunityLookbook: React.FC<CommunityLookbookProps> = ({
                           />
                         </div>
                         <div>
-                          <span className="text-[10px] uppercase font-bold text-[#4285F4] font-mono">
+                          <span className="text-[10px] uppercase font-bold text-[#8AB4F8] font-mono">
                             {product.collection}
                           </span>
-                          <h4 className="text-sm font-semibold text-[#202124] group-hover:text-[#4285F4] transition-colors line-clamp-1">
+                          <h4 className="text-sm font-semibold text-white group-hover:text-[#4285F4] transition-colors line-clamp-1">
                             {product.name}
                           </h4>
-                          <div className="text-xs font-bold text-[#202124] font-mono mt-0.5">
+                          <div className="text-xs font-bold text-[#FBBC05] font-mono mt-0.5">
                             ${product.price.toFixed(2)}
                           </div>
                         </div>
@@ -153,7 +153,7 @@ export const CommunityLookbook: React.FC<CommunityLookbookProps> = ({
                           e.stopPropagation();
                           onQuickView(product);
                         }}
-                        className="p-2 rounded-xl bg-white hover:bg-[#4285F4] hover:text-white text-[#5F6368] border border-[#DADCE0] transition-colors cursor-pointer"
+                        className="p-2 rounded-xl bg-[#202428] hover:bg-[#4285F4] text-[#9AA0A6] hover:text-white border border-[#2A2E33] transition-colors cursor-pointer"
                         title="Quick View"
                       >
                         <Eye className="w-4 h-4" />
@@ -164,12 +164,12 @@ export const CommunityLookbook: React.FC<CommunityLookbookProps> = ({
 
                 {/* Instant Look Bundle CTA */}
                 <div className="pt-2">
-                  <div className="p-4 rounded-2xl bg-gradient-to-r from-[#EAF2FF] to-[#F1F6FF] border border-[#D2E3FC] flex items-center justify-between">
+                  <div className="p-4 rounded-2xl bg-[#17191C] border border-[#2A2E33] flex items-center justify-between">
                     <div>
-                      <div className="text-xs font-bold text-[#4285F4]">
+                      <div className="text-xs font-bold text-[#8AB4F8]">
                         Bundle Total
                       </div>
-                      <div className="text-base font-bold font-mono text-[#202124]">
+                      <div className="text-base font-bold font-mono text-white">
                         ${taggedProductItems.reduce((sum, p) => sum + p.price, 0).toFixed(2)}
                       </div>
                     </div>
@@ -179,7 +179,7 @@ export const CommunityLookbook: React.FC<CommunityLookbookProps> = ({
                       onClick={() => {
                         if (taggedProductItems[0]) onSelectProduct(taggedProductItems[0]);
                       }}
-                      className="px-4 py-2 rounded-xl bg-[#202124] hover:bg-[#4285F4] text-white text-xs font-bold transition-colors flex items-center gap-1.5 cursor-pointer"
+                      className="px-4 py-2 rounded-xl bg-[#4285F4] hover:bg-[#3367D6] text-white text-xs font-bold transition-colors flex items-center gap-1.5 cursor-pointer shadow-md shadow-[#4285F4]/20"
                     >
                       <span>View Outfit Pieces</span>
                       <ArrowRight className="w-3.5 h-3.5" />

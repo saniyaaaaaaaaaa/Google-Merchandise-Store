@@ -35,31 +35,31 @@ export const TrendingNow: React.FC<TrendingNowProps> = ({
   }).slice(0, 8);
 
   return (
-    <section className="py-12 sm:py-16 bg-[#F8F7F4] border-b border-[#E5E0D8]">
+    <section className="py-12 sm:py-16 bg-[#0B0D0F] border-b border-[#2A2E33]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header & Tabs */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
           <div>
             <div className="flex items-center gap-2 text-xs font-mono uppercase font-bold tracking-wider text-[#EA4335] mb-1.5">
               <Flame className="w-3.5 h-3.5 fill-current" />
-              <span>Highest Engagement & Conversion</span>
+              <span>Community Favorites</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#202124] tracking-tight font-display">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight font-display">
               Trending right now.
             </h2>
-            <p className="text-sm sm:text-base text-[#5F6368] max-w-xl mt-1">
+            <p className="text-sm sm:text-base text-[#9AA0A6] max-w-xl mt-1">
               The most active items across Mountain View, New York, and global tech hubs.
             </p>
           </div>
 
-          {/* Filter Pills */}
+          {/* Filter Pills with Google Color Accents */}
           <div className="flex flex-wrap items-center gap-2">
             <button
               onClick={() => setActiveTab('all')}
               className={`px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer ${
                 activeTab === 'all'
-                  ? 'bg-[#202124] text-white shadow-xs'
-                  : 'bg-white text-[#5F6368] hover:bg-[#F8F7F4] border border-[#DADCE0]'
+                  ? 'bg-[#4285F4] text-white shadow-md shadow-[#4285F4]/20'
+                  : 'bg-[#17191C] text-[#9AA0A6] hover:text-white hover:bg-[#202428] border border-[#2A2E33]'
               }`}
             >
               All Trending
@@ -68,8 +68,8 @@ export const TrendingNow: React.FC<TrendingNowProps> = ({
               onClick={() => setActiveTab('apparel')}
               className={`px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer ${
                 activeTab === 'apparel'
-                  ? 'bg-[#34A853] text-white shadow-xs'
-                  : 'bg-white text-[#5F6368] hover:bg-[#F8F7F4] border border-[#DADCE0]'
+                  ? 'bg-[#34A853] text-white shadow-md shadow-[#34A853]/20'
+                  : 'bg-[#17191C] text-[#9AA0A6] hover:text-white hover:bg-[#202428] border border-[#2A2E33]'
               }`}
             >
               Apparel & Fleece
@@ -78,8 +78,8 @@ export const TrendingNow: React.FC<TrendingNowProps> = ({
               onClick={() => setActiveTab('collectibles')}
               className={`px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer ${
                 activeTab === 'collectibles'
-                  ? 'bg-[#4285F4] text-white shadow-xs'
-                  : 'bg-white text-[#5F6368] hover:bg-[#F8F7F4] border border-[#DADCE0]'
+                  ? 'bg-[#FBBC05] text-[#202124] shadow-md shadow-[#FBBC05]/20'
+                  : 'bg-[#17191C] text-[#9AA0A6] hover:text-white hover:bg-[#202428] border border-[#2A2E33]'
               }`}
             >
               Collectibles & Dino
@@ -88,8 +88,8 @@ export const TrendingNow: React.FC<TrendingNowProps> = ({
               onClick={() => setActiveTab('lifestyle')}
               className={`px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer ${
                 activeTab === 'lifestyle'
-                  ? 'bg-[#EA4335] text-white shadow-xs'
-                  : 'bg-white text-[#5F6368] hover:bg-[#F8F7F4] border border-[#DADCE0]'
+                  ? 'bg-[#EA4335] text-white shadow-md shadow-[#EA4335]/20'
+                  : 'bg-[#17191C] text-[#9AA0A6] hover:text-white hover:bg-[#202428] border border-[#2A2E33]'
               }`}
             >
               Bags & Drinkware
@@ -131,10 +131,10 @@ export const TrendingNow: React.FC<TrendingNowProps> = ({
               trackSelectPromotion('View All Trending Products', 'trending_bottom');
               onViewAll();
             }}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-white hover:bg-[#F8F7F4] border border-[#DADCE0] text-[#202124] text-sm font-bold shadow-xs hover:shadow-md transition-all group cursor-pointer"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-[#17191C] hover:bg-[#202428] border border-[#2A2E33] text-white hover:text-[#4285F4] text-sm font-bold shadow-lg transition-all group cursor-pointer"
           >
             <span>View Full Catalog ({products.length} Products)</span>
-            <ArrowRight className="w-4 h-4 text-[#5F6368] group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-4 h-4 text-[#9AA0A6] group-hover:text-[#4285F4] group-hover:translate-x-1 transition-transform" />
           </motion.button>
         </div>
       </div>

@@ -1814,8 +1814,8 @@ export const COLLECTIONS = [
     "id": "1998 Retro",
     "name": "1998 Retro Collection",
     "tagline": "Retro is Back — Old-school Google energy, reimagined for today.",
-    "badge": "GA4 TOP PERFORMER",
-    "bounceRate": "9.5% Bounce (vs. 67% Avg)",
+    "badge": "ARCHIVAL CAPSULE",
+    "bounceRate": "Authentic 1998 Drop",
     "image": "https://ik.imagekit.io/RM/store/20160512512/assets/items/largeimages/GGOEGXXX2631.jpg",
     "count": 8
   },
@@ -1824,7 +1824,7 @@ export const COLLECTIONS = [
     "name": "Gemini AI Collection",
     "tagline": "Wear the future of generative intelligence & neural creativity.",
     "badge": "TECH INNOVATION",
-    "bounceRate": "12.3% Bounce Rate",
+    "bounceRate": "Developer Edition",
     "image": "https://ik.imagekit.io/RM/store/20160512512/assets/items/largeimages/GGOEGXXX1358.jpg",
     "count": 4
   },
@@ -1833,7 +1833,7 @@ export const COLLECTIONS = [
     "name": "Chrome Dino Collection",
     "tagline": "Celebrating a decade of the world’s most played offline runner.",
     "badge": "COMMUNITY ICON",
-    "bounceRate": "11.8% Bounce Rate",
+    "bounceRate": "10-Year Anniversary",
     "image": "https://ik.imagekit.io/RM/store/20160512512/assets/items/largeimages/GGOEGABJ125299.jpg",
     "count": 5
   },
@@ -1842,7 +1842,7 @@ export const COLLECTIONS = [
     "name": "Campus Essentials",
     "tagline": "Engineered for developers, commuters, and everyday makers.",
     "badge": "DAILY DRIVERS",
-    "bounceRate": "18.4% Bounce Rate",
+    "bounceRate": "Mountain View Staple",
     "image": "https://ik.imagekit.io/RM/store/20160512512/assets/items/largeimages/GGOEGBRB262099.jpg",
     "count": 6
   }

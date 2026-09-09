@@ -9,9 +9,7 @@ import {
 } from './data/products';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
-import { NewHereEssentials } from './components/NewHereEssentials';
 import { ShopByCategory } from './components/ShopByCategory';
-import { TrendingNow } from './components/TrendingNow';
 import { RetroFeature } from './components/RetroFeature';
 import { FreshDrops } from './components/FreshDrops';
 import { PersonalizedDiscovery } from './components/PersonalizedDiscovery';
@@ -187,12 +185,12 @@ export default function App() {
   const totalCartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
-    <div className="min-h-screen bg-[#F5F2ED] text-[#1A1A1A] font-sans flex flex-col selection:bg-[#C85A32] selection:text-white">
+    <div className="min-h-screen bg-[#0B0D0F] text-[#F1F3F4] font-sans flex flex-col selection:bg-[#4285F4] selection:text-white">
       {/* Toast Notification */}
       {toastMessage && (
         <div
           id="app-toast-notification"
-          className="fixed bottom-6 right-6 z-50 bg-[#1A1A1A] text-white px-5 py-3 rounded-2xl shadow-2xl border border-white/10 text-xs font-semibold flex items-center gap-3 animate-fade-in"
+          className="fixed bottom-6 right-6 z-50 bg-[#17191C] text-white px-5 py-3 rounded-2xl shadow-2xl border border-[#2A2E33] text-xs font-semibold flex items-center gap-3 animate-fade-in"
         >
           <span className="w-2 h-2 rounded-full bg-[#34A853]" />
           <span>{toastMessage}</span>
@@ -225,35 +223,13 @@ export default function App() {
               onSelectProduct={handleSelectProduct}
             />
 
-            {/* 2. New Here? Essentials Matrix */}
-            <NewHereEssentials
-              onSelectCollection={handleSelectCollection}
-              onSelectCategory={handleSelectCategory}
-              onSelectFilter={(type, val) => {
-                if (type === 'collection') handleSelectCollection(val);
-                else if (type === 'category') handleSelectCategory(val);
-                else handleNavigate('plp');
-              }}
-            />
-
-            {/* 3. Shop by Category & Visual Taxonomy */}
+            {/* 2. Shop by Category & Visual Taxonomy */}
             <ShopByCategory
               onSelectCategory={handleSelectCategory}
               onSelectCollection={handleSelectCollection}
             />
 
-            {/* 4. Trending Now Shelf */}
-            <TrendingNow
-              products={TRENDING_PRODUCTS}
-              onSelectProduct={handleSelectProduct}
-              onQuickView={setQuickViewProduct}
-              onAddToCart={handleAddToCart}
-              wishlistIds={wishlistIds}
-              onToggleWishlist={handleToggleWishlist}
-              onViewAll={() => handleNavigate('plp')}
-            />
-
-            {/* 5. 1998 Retro Highlight Module */}
+            {/* 3. 1998 Retro High-Impact Campaign Banner & Feature */}
             <RetroFeature
               retroProducts={RETRO_SECTION_PRODUCTS}
               onSelectProduct={handleSelectProduct}
@@ -264,7 +240,7 @@ export default function App() {
               onExploreCampaign={() => handleNavigate('campaign')}
             />
 
-            {/* 6. Fresh Limited Drops */}
+            {/* 4. Fresh Limited Drops */}
             <FreshDrops
               newDropProducts={FRESH_DROP_PRODUCTS}
               onSelectProduct={handleSelectProduct}

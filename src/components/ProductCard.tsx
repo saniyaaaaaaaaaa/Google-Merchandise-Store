@@ -88,9 +88,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       onClick={handleCardClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      whileHover={{ y: -4 }}
+      whileHover={{ y: -5 }}
       transition={{ duration: 0.25, ease: 'easeOut' }}
-      className="group relative flex flex-col bg-white rounded-2xl border border-[#E5E0D8] overflow-hidden transition-shadow duration-300 hover:shadow-xl hover:shadow-[#202124]/8 hover:border-[#4285F4]/30 cursor-pointer"
+      className="group relative flex flex-col bg-[#111315] rounded-2xl border border-[#2A2E33] overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-[#4285F4]/15 hover:border-[#4285F4]/50 cursor-pointer"
     >
       {/* Top Badges & Actions */}
       <div className="absolute top-3 left-3 right-3 z-10 flex items-center justify-between pointer-events-none">
@@ -98,7 +98,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           {product.badge && (
             <span
               id={`badge-${product.id}`}
-              className={`text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full shadow-xs border ${getBadgeStyle()}`}
+              className={`text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full shadow-md border ${getBadgeStyle()}`}
             >
               {product.badge}
             </span>
@@ -119,22 +119,22 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           className={`pointer-events-auto p-2 rounded-full transition-all duration-200 backdrop-blur-md ${
             isWishlisted
               ? 'bg-[#EA4335] text-white shadow-md scale-105'
-              : 'bg-white/95 hover:bg-white text-[#5F6368] hover:text-[#EA4335] shadow-xs border border-[#E5E0D8]'
+              : 'bg-[#0B0D0F]/75 hover:bg-[#0B0D0F] text-[#BDC1C6] hover:text-[#EA4335] shadow-sm border border-[#2A2E33]'
           }`}
         >
           <Heart className={`w-4 h-4 transition-transform ${isWishlisted ? 'fill-current scale-110' : ''}`} />
         </motion.button>
       </div>
 
-      {/* Product Image Stage */}
-      <div className="relative aspect-square w-full bg-[#F8F7F4] overflow-hidden flex items-center justify-center p-5 border-b border-[#EFECE6]">
+      {/* Product Image Stage: Crisp Light Background for Maximum Clarity */}
+      <div className="relative aspect-square w-full bg-gradient-to-b from-[#FFFFFF] to-[#F1F3F4] overflow-hidden flex items-center justify-center p-6 border-b border-[#2A2E33]">
         <img
           src={imgError ? product.image : displayImage}
           alt={product.name}
           referrerPolicy="no-referrer"
           onError={() => setImgError(true)}
           loading={priority ? 'eager' : 'lazy'}
-          className="w-full h-full object-contain transition-transform duration-500 ease-out group-hover:scale-108"
+          className="w-full h-full object-contain transition-transform duration-500 ease-out group-hover:scale-108 drop-shadow-md"
         />
 
         {/* Floating Quick Action Buttons on Desktop Hover */}
@@ -142,7 +142,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           <button
             id={`quick-view-${product.id}`}
             onClick={handleQuickViewClick}
-            className="flex-1 flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-white/95 backdrop-blur-md text-xs font-semibold text-[#202124] shadow-md hover:bg-white hover:text-[#4285F4] transition-colors border border-[#E5E0D8]"
+            className="flex-1 flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-[#17191C]/95 backdrop-blur-md text-xs font-semibold text-white shadow-lg hover:bg-[#202428] hover:text-[#4285F4] transition-colors border border-[#2A2E33]"
           >
             <Eye className="w-3.5 h-3.5" />
             Quick View
@@ -151,10 +151,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             id={`quick-add-${product.id}`}
             onClick={handleQuickAdd}
             disabled={isAdding || justAdded}
-            className={`flex-1 flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl text-xs font-semibold shadow-md transition-all ${
+            className={`flex-1 flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl text-xs font-semibold shadow-lg transition-all ${
               justAdded
                 ? 'bg-[#34A853] text-white'
-                : 'bg-[#202124] hover:bg-[#4285F4] text-white'
+                : 'bg-[#4285F4] hover:bg-[#3367D6] text-white shadow-[#4285F4]/20'
             }`}
           >
             {justAdded ? (
@@ -172,27 +172,27 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         </div>
       </div>
 
-      {/* Product Details Section */}
-      <div className="p-4 flex flex-col flex-grow justify-between gap-3 bg-white">
+      {/* Product Details Section: Dark Background + White Typography */}
+      <div className="p-4 flex flex-col flex-grow justify-between gap-3 bg-[#111315]">
         <div className="space-y-1.5">
           {/* Brand & Collection Label */}
-          <div className="flex items-center justify-between text-xs text-[#5F6368] font-medium">
-            <span className="font-medium text-[#70757A]">{product.brand}</span>
-            <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#F1F3F4] text-[#3C4043] font-mono border border-[#DADCE0]">
+          <div className="flex items-center justify-between text-xs text-[#9AA0A6] font-medium">
+            <span className="font-medium text-[#BDC1C6]">{product.brand}</span>
+            <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#17191C] text-[#E8EAED] font-mono border border-[#2A2E33]">
               {product.collection}
             </span>
           </div>
 
           {/* Product Name */}
-          <h3 className="font-semibold text-[#202124] text-sm md:text-base line-clamp-1 group-hover:text-[#4285F4] transition-colors">
+          <h3 className="font-semibold text-white text-sm md:text-base line-clamp-1 group-hover:text-[#4285F4] transition-colors">
             {product.name}
           </h3>
 
           {/* Star Rating */}
-          <div className="flex items-center gap-1.5 text-xs text-[#5F6368]">
+          <div className="flex items-center gap-1.5 text-xs text-[#9AA0A6]">
             <div className="flex items-center text-[#FBBC05]">
               <Star className="w-3.5 h-3.5 fill-current" />
-              <span className="ml-1 font-semibold text-[#202124]">{product.rating.toFixed(1)}</span>
+              <span className="ml-1 font-semibold text-[#E8EAED]">{product.rating.toFixed(1)}</span>
             </div>
             <span>•</span>
             <span>({product.reviewCount})</span>
@@ -200,7 +200,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         </div>
 
         {/* Color Swatches and Price Row */}
-        <div className="pt-2.5 border-t border-[#EFECE6] flex items-center justify-between">
+        <div className="pt-2.5 border-t border-[#2A2E33] flex items-center justify-between">
           {/* Color Indicators */}
           <div className="flex items-center gap-1.5" onClick={(e) => e.stopPropagation()}>
             {product.colors.map((color) => (
@@ -211,8 +211,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
                 onClick={() => setSelectedColor(color)}
                 className={`w-3.5 h-3.5 rounded-full border transition-all ${
                   selectedColor.name === color.name
-                    ? 'ring-2 ring-offset-1 ring-[#4285F4] scale-110'
-                    : 'border-stone-300 opacity-80 hover:opacity-100'
+                    ? 'ring-2 ring-offset-1 ring-offset-[#111315] ring-[#4285F4] scale-110'
+                    : 'border-[#3C4043] opacity-80 hover:opacity-100'
                 }`}
                 style={{ backgroundColor: color.hex }}
               />
@@ -222,11 +222,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           {/* Price */}
           <div className="flex items-baseline gap-1.5">
             {product.originalPrice && (
-              <span className="text-xs text-[#70757A] line-through font-medium">
+              <span className="text-xs text-[#80868B] line-through font-medium">
                 ${product.originalPrice.toFixed(2)}
               </span>
             )}
-            <span className="font-bold text-[#202124] text-base font-mono">
+            <span className="font-bold text-[#8AB4F8] text-base font-mono">
               ${product.price.toFixed(2)}
             </span>
           </div>

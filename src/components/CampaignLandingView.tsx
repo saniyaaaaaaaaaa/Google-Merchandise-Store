@@ -87,8 +87,8 @@ export const CampaignLandingView: React.FC<CampaignLandingViewProps> = ({
                 <span className="font-bold text-[#FBBC05] text-sm">Limited Drop</span>
               </div>
               <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-                <span className="text-gray-400 block text-[10px] uppercase">GA4 Engagement</span>
-                <span className="font-bold text-[#34A853] text-sm">9.5% Bounce Rate</span>
+                <span className="text-gray-400 block text-[10px] uppercase">Campus Origin</span>
+                <span className="font-bold text-[#34A853] text-sm">Mountain View, CA</span>
               </div>
             </div>
           </div>

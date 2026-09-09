@@ -52,30 +52,30 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
     <div
       id="quick-view-backdrop"
       onClick={onClose}
-      className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto animate-fade-in"
+      className="fixed inset-0 z-50 bg-black/80 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto animate-fade-in"
     >
       <div
         id="quick-view-container"
         onClick={(e) => e.stopPropagation()}
-        className="bg-[#FAF8F5] rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl border border-[#E5E0D8] relative overflow-hidden flex flex-col md:flex-row gap-6"
+        className="bg-[#111315] rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl border border-[#2A2E33] relative overflow-hidden flex flex-col md:flex-row gap-6"
       >
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 rounded-full hover:bg-white text-stone-400 hover:text-[#1A1A1A] transition-colors z-10 cursor-pointer"
+          className="absolute top-4 right-4 p-2 rounded-full hover:bg-[#17191C] text-[#9AA0A6] hover:text-white transition-colors z-10 cursor-pointer"
         >
           <X className="w-5 h-5" />
         </button>
 
         {/* Product Image Stage */}
-        <div className="w-full md:w-1/2 aspect-square rounded-2xl bg-white border border-[#E5E0D8] p-6 flex items-center justify-center relative">
+        <div className="w-full md:w-1/2 aspect-square rounded-2xl bg-white border border-[#2A2E33] p-6 flex items-center justify-center relative">
           <img
             src={selectedColor.image || product.image}
             alt={product.name}
             className="w-full h-full object-contain"
           />
           {product.badge && (
-            <span className="absolute top-3 left-3 px-2.5 py-0.5 rounded-full bg-[#1A1A1A] text-white text-[10px] font-bold font-mono uppercase shadow-xs">
+            <span className="absolute top-3 left-3 px-2.5 py-0.5 rounded-full bg-[#111315] text-white text-[10px] font-bold font-mono uppercase shadow-xs border border-[#2A2E33]">
               {product.badge}
             </span>
           )}
@@ -84,42 +84,42 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
         {/* Details & Options */}
         <div className="w-full md:w-1/2 flex flex-col justify-between space-y-4">
           <div className="space-y-2">
-            <div className="flex items-center justify-between text-xs text-stone-500 font-medium">
+            <div className="flex items-center justify-between text-xs text-[#9AA0A6] font-medium">
               <span>{product.brand}</span>
-              <span className="font-mono text-[#C85A32] font-bold">{product.collection}</span>
+              <span className="font-mono text-[#4285F4] font-bold">{product.collection}</span>
             </div>
 
-            <h3 className="font-bold text-[#1A1A1A] text-lg sm:text-xl font-display leading-snug">
+            <h3 className="font-bold text-white text-lg sm:text-xl font-display leading-snug">
               {product.name}
             </h3>
 
             {/* Rating */}
-            <div className="flex items-center gap-1.5 text-xs text-[#C99436]">
+            <div className="flex items-center gap-1.5 text-xs text-[#FBBC05]">
               <Star className="w-3.5 h-3.5 fill-current" />
-              <span className="font-bold text-[#1A1A1A]">{product.rating.toFixed(1)}</span>
-              <span className="text-stone-400">({product.reviewCount} reviews)</span>
+              <span className="font-bold text-white">{product.rating.toFixed(1)}</span>
+              <span className="text-[#9AA0A6]">({product.reviewCount} reviews)</span>
             </div>
 
             {/* Price */}
             <div className="flex items-baseline gap-2 pt-1">
-              <span className="text-2xl font-bold font-mono text-[#1A1A1A]">
+              <span className="text-2xl font-bold font-mono text-white">
                 ${product.price.toFixed(2)}
               </span>
               {product.originalPrice && (
-                <span className="text-sm text-stone-400 line-through font-mono">
+                <span className="text-sm text-[#9AA0A6] line-through font-mono">
                   ${product.originalPrice.toFixed(2)}
                 </span>
               )}
             </div>
 
-            <p className="text-xs text-stone-600 line-clamp-3 leading-relaxed">
+            <p className="text-xs text-[#9AA0A6] line-clamp-3 leading-relaxed">
               {product.description}
             </p>
 
             {/* Color Swatches */}
             <div className="pt-2">
-              <div className="text-[11px] font-bold text-stone-700 mb-1.5">
-                Color: <span className="font-normal text-stone-500">{selectedColor.name}</span>
+              <div className="text-[11px] font-bold text-white mb-1.5">
+                Color: <span className="font-normal text-[#9AA0A6]">{selectedColor.name}</span>
               </div>
               <div className="flex items-center gap-2">
                 {product.colors.map(color => (
@@ -128,8 +128,8 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
                     onClick={() => setSelectedColor(color)}
                     className={`w-5 h-5 rounded-full border transition-all cursor-pointer ${
                       selectedColor.name === color.name
-                        ? 'ring-2 ring-offset-1 ring-[#C85A32] scale-110'
-                        : 'border-[#D4CECE] opacity-80'
+                        ? 'ring-2 ring-offset-1 ring-offset-[#111315] ring-[#4285F4] scale-110'
+                        : 'border-[#2A2E33] opacity-80'
                     }`}
                     style={{ backgroundColor: color.hex }}
                   />
@@ -140,7 +140,7 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
             {/* Sizes */}
             {product.sizes && (
               <div className="pt-2">
-                <div className="text-[11px] font-bold text-stone-700 mb-1.5">Size:</div>
+                <div className="text-[11px] font-bold text-white mb-1.5">Size:</div>
                 <div className="flex flex-wrap gap-1.5">
                   {product.sizes.map(size => (
                     <button
@@ -148,8 +148,8 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
                       onClick={() => setSelectedSize(size)}
                       className={`px-2.5 py-1 rounded-lg text-xs font-semibold border transition-all cursor-pointer ${
                         selectedSize === size
-                          ? 'bg-[#1A1A1A] text-white border-[#1A1A1A]'
-                          : 'bg-white text-stone-700 border-[#E5E0D8] hover:border-[#C85A32]'
+                          ? 'bg-[#4285F4] text-white border-[#4285F4]'
+                          : 'bg-[#17191C] text-[#9AA0A6] border-[#2A2E33] hover:border-[#4285F4] hover:text-white'
                       }`}
                     >
                       {size}
@@ -161,15 +161,15 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
           </div>
 
           {/* Action CTAs */}
-          <div className="space-y-2 pt-4 border-t border-[#E5E0D8]">
+          <div className="space-y-2 pt-4 border-t border-[#2A2E33]">
             <div className="flex items-center gap-2">
               <button
                 id="quick-view-add-to-cart-btn"
                 onClick={handleAdd}
                 className={`flex-1 py-3 px-4 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 shadow-xs cursor-pointer ${
                   justAdded
-                    ? 'bg-[#4A6B53] text-white'
-                    : 'bg-[#1A1A1A] hover:bg-[#C85A32] text-white'
+                    ? 'bg-[#34A853] text-white'
+                    : 'bg-[#4285F4] hover:bg-[#3367D6] text-white shadow-md shadow-[#4285F4]/20'
                 }`}
               >
                 {justAdded ? (
@@ -191,7 +191,7 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
                   onToggleWishlist(product);
                 }}
                 className={`p-3 rounded-xl border transition-all cursor-pointer ${
-                  isWishlisted ? 'bg-[#C85A32] text-white border-[#C85A32]' : 'bg-white text-stone-700 border-[#E5E0D8] hover:text-[#C85A32]'
+                  isWishlisted ? 'bg-[#EA4335] text-white border-[#EA4335]' : 'bg-[#17191C] text-[#9AA0A6] border-[#2A2E33] hover:text-[#EA4335]'
                 }`}
               >
                 <Heart className={`w-4 h-4 ${isWishlisted ? 'fill-current' : ''}`} />
@@ -200,7 +200,7 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
 
             <button
               onClick={handleFullDetails}
-              className="w-full text-center text-xs font-semibold text-[#C85A32] hover:underline flex items-center justify-center gap-1 py-1 cursor-pointer"
+              className="w-full text-center text-xs font-semibold text-[#4285F4] hover:underline flex items-center justify-center gap-1 py-1 cursor-pointer"
             >
               <span>View full product specs & reviews</span>
               <ArrowRight className="w-3 h-3" />
