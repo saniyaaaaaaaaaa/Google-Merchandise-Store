@@ -82,13 +82,13 @@ export const FreshDrops: React.FC<FreshDropsProps> = ({
 
               <div className="space-y-2">
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display leading-tight text-white">
-                  Fresh from the Store.
+                  From the screen to the street.
                   <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#4285F4] via-[#EA4335] to-[#FBBC05]">
                     Limited drops every Thursday.
                   </span>
                 </h2>
                 <p className="text-[#9AA0A6] text-sm sm:text-base leading-relaxed max-w-xl">
-                  Never miss an archival revival or developer capsule. Sign up to get 1-hour early access and VIP restock alerts.
+                  Tech culture, made wearable. Never miss an archival revival or developer capsule with 1-hour early access and VIP restock alerts.
                 </p>
               </div>
 

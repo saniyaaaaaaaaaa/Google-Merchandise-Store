@@ -82,7 +82,17 @@ export const ProductListingView: React.FC<ProductListingViewProps> = ({
       if (filters.sortBy === 'price-desc') return b.price - a.price;
       if (filters.sortBy === 'rating') return b.rating - a.rating;
       if (filters.sortBy === 'newest') return (b.isNewDrop ? 1 : 0) - (a.isNewDrop ? 1 : 0);
-      return 0; // featured default
+      // Data-driven featured merchandising priority: Men's/Unisex apparel, 1998 Retro, tech/developer merchandise
+      const getMerchPriority = (item: Product) => {
+        if (item.category === 'Apparel' && item.collection === '1998 Retro') return 4;
+        if (item.category === 'Apparel') return 3;
+        if (item.collection === '1998 Retro') return 2.5;
+        if (item.collection === 'Gemini' || item.collection === 'Chrome Dino') return 2;
+        return 1;
+      };
+      const diff = getMerchPriority(b) - getMerchPriority(a);
+      if (diff !== 0) return diff;
+      return 0; // featured default fallback
     });
   }, [products, filters]);
 

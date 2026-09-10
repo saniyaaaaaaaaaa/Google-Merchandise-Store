@@ -27,7 +27,7 @@ export const ShopByCategory: React.FC<ShopByCategoryProps> = ({
               Shop by category & collection.
             </h2>
             <p className="text-sm sm:text-base text-[#9AA0A6] max-w-xl mt-1">
-              Browse our complete catalog engineered for developers, fans, and campus culture.
+              Tech culture, made wearable. Explore Google merchandise engineered for developers, creators, and everyday thinkers.
             </p>
           </div>
         </div>
@@ -123,7 +123,7 @@ export const ShopByCategory: React.FC<ShopByCategoryProps> = ({
             <div className="relative z-10 space-y-2 max-w-[70%]">
               <div className="flex items-center gap-2">
                 <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-[#EA4335] text-white shadow-sm">
-                  1998. REIMAGINED.
+                  BORN IN '98. MADE FOR NOW.
                 </span>
               </div>
               <h4 className="text-xl font-bold font-display leading-tight text-white group-hover:text-[#EA4335] transition-colors">

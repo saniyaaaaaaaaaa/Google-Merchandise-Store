@@ -1,4 +1,5 @@
 import { Product } from '../types';
+import commuterLookbookImg from '../assets/images/google_commuter_lookbook_1789012296789.jpg';
 
 export const PRODUCTS: Product[] = [
   {
@@ -1852,8 +1853,8 @@ export const LOOKBOOK_ITEMS = [
   {
     "id": "look-1",
     "title": "Morning Commute in Mountain View, CA",
-    "subtitle": "Worn by Alex K., Systems Engineer",
-    "lifestyleImage": "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1200&q=80",
+    "subtitle": "Worn by Marcus L., Cloud Systems Architect",
+    "lifestyleImage": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=80",
     "taggedProducts": [
       "google-commuter-daypack",
       "google-tech-fleece-pullover"
@@ -1862,6 +1863,17 @@ export const LOOKBOOK_ITEMS = [
   },
   {
     "id": "look-2",
+    "title": "Deep Focus Studio in Mission District",
+    "subtitle": "Captured by Priya T., AI Researcher",
+    "lifestyleImage": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=80",
+    "taggedProducts": [
+      "nano-banana-heavyweight-sweatshirt",
+      "google-surfside-speckled-mug"
+    ],
+    "city": "San Francisco, CA"
+  },
+  {
+    "id": "look-3",
     "title": "Sunset Pickleball Rally at Charleston Park",
     "subtitle": "Played by Maya & David, UX Designers",
     "lifestyleImage": "https://images.unsplash.com/photo-1526676037777-05a232554f77?auto=format&fit=crop&w=1200&q=80",
@@ -1872,15 +1884,15 @@ export const LOOKBOOK_ITEMS = [
     "city": "Mountain View, CA"
   },
   {
-    "id": "look-3",
-    "title": "Deep Focus Studio in Mission District",
-    "subtitle": "Captured by Priya T., AI Researcher",
-    "lifestyleImage": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=80",
+    "id": "look-4",
+    "title": "Hudson Yards Developer Loft",
+    "subtitle": "Styled by Jordan R., Frontend Lead",
+    "lifestyleImage": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1200&q=80",
     "taggedProducts": [
-      "nano-banana-heavyweight-sweatshirt",
-      "google-surfside-speckled-mug"
+      "gemini-spark-developer-tee",
+      "google-1998-heritage-windbreaker"
     ],
-    "city": "San Francisco, CA"
+    "city": "New York, NY"
   }
 ];
 
@@ -1932,14 +1944,25 @@ export const FRESH_DROP_PRODUCTS: Product[] = PRODUCTS.filter(p => [
 
 // 5. PERSONALIZED DISCOVERY SEGMENTS (Dedicated non-overlapping items)
 export const RECOMMENDED_SEGMENTS = {
-  campus: PRODUCTS.filter(p => [
-    'google-campus-canvas-backpack',
-    'google-surfside-camp-mug'
+  mensUnisex: PRODUCTS.filter(p => [
+    'google-tech-fleece-pullover',
+    'google-plymouth-zip-hoodie',
+    'gemini-spark-developer-tee',
+    'google-1998-heritage-windbreaker',
+    'google-classic-crewneck-sweatshirt',
+    'google-organic-cotton-tee'
   ].includes(p.id)),
   developer: PRODUCTS.filter(p => [
     'gemini-multimodal-neural-notebook',
     'chrome-dino-game-over-mug',
-    'chrome-dino-metal-keychain'
+    'chrome-dino-metal-keychain',
+    'gemini-neural-matrix-journal'
+  ].includes(p.id)),
+  campus: PRODUCTS.filter(p => [
+    'google-campus-canvas-backpack',
+    'google-surfside-camp-mug',
+    'google-commuter-daypack',
+    'google-heritage-twill-cap'
   ].includes(p.id)),
   classics: PRODUCTS.filter(p => [
     'google-plymouth-zip-hoodie',

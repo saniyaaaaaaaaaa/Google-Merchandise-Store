@@ -69,10 +69,11 @@ export const RetroFeature: React.FC<RetroFeatureProps> = ({
 
               <div className="space-y-2">
                 <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black font-display tracking-tight text-white leading-[1.05]">
-                  1998. <span className="text-[#FBBC05]">REIMAGINED.</span>
+                  BORN IN THE EARLY WEB.<br />
+                  <span className="text-[#FBBC05]">MADE FOR NOW.</span>
                 </h2>
                 <p className="text-sm sm:text-base text-[#9AA0A6] leading-relaxed max-w-lg pt-2">
-                  Mountain View garage energy, engineered for the modern wardrobe. Featuring collaborative Marine Layer micro-modal fleece, heavy cotton crew socks, and shatterproof Tritan Nalgene drinkware in original primary colors.
+                  Old-school energy, engineered for the modern wardrobe. Featuring collaborative Marine Layer micro-modal fleece, heavy cotton crew socks, and shatterproof Tritan Nalgene drinkware in original primary colors.
                 </p>
               </div>
 
@@ -97,7 +98,7 @@ export const RetroFeature: React.FC<RetroFeatureProps> = ({
                 <button
                   id="retro-explore-campaign-btn"
                   onClick={() => {
-                    trackSelectPromotion('1998. Reimagined Banner', 'campaign_banner');
+                    trackSelectPromotion('1998 Retro: Born in the Early Web', 'campaign_banner');
                     onExploreCampaign();
                   }}
                   className="py-3.5 px-8 rounded-full bg-[#4285F4] hover:bg-[#3367D6] text-white text-xs sm:text-sm font-semibold transition-all shadow-lg shadow-[#4285F4]/30 flex items-center gap-2.5 group cursor-pointer"

@@ -27,7 +27,7 @@ export const PersonalizedDiscovery: React.FC<PersonalizedDiscoveryProps> = ({
   onToggleWishlist,
   excludeProductIds = new Set()
 }) => {
-  const [activeSegment, setActiveSegment] = useState<'campus' | 'developer' | 'classics' | 'recent'>('campus');
+  const [activeSegment, setActiveSegment] = useState<'mensUnisex' | 'developer' | 'campus' | 'recent'>('mensUnisex');
 
   // Filter recommendations based on active discovery segment with strict non-duplication
   const getSegmentProducts = (): Product[] => {
@@ -35,12 +35,12 @@ export const PersonalizedDiscovery: React.FC<PersonalizedDiscoveryProps> = ({
       return recentlyViewed.slice(0, 4);
     }
 
-    if (activeSegment === 'campus') {
-      const predefined = RECOMMENDED_SEGMENTS.campus;
+    if (activeSegment === 'mensUnisex') {
+      const predefined = RECOMMENDED_SEGMENTS.mensUnisex;
       const extras = products.filter(
         p => !excludeProductIds.has(p.id) &&
              !predefined.some(item => item.id === p.id) &&
-             (p.collection === 'Campus Essentials' || p.category === 'Bags' || p.category === 'Drinkware')
+             (p.category === 'Apparel' || p.tags.includes('hoodie') || p.tags.includes('pullover') || p.tags.includes('jacket'))
       );
       return [...predefined, ...extras].slice(0, 4);
     }
@@ -55,12 +55,12 @@ export const PersonalizedDiscovery: React.FC<PersonalizedDiscoveryProps> = ({
       return [...predefined, ...extras].slice(0, 4);
     }
 
-    if (activeSegment === 'classics') {
-      const predefined = RECOMMENDED_SEGMENTS.classics;
+    if (activeSegment === 'campus') {
+      const predefined = RECOMMENDED_SEGMENTS.campus;
       const extras = products.filter(
         p => !excludeProductIds.has(p.id) &&
              !predefined.some(item => item.id === p.id) &&
-             (p.category === 'Apparel' || p.category === 'Stationery')
+             (p.collection === 'Campus Essentials' || p.category === 'Bags' || p.category === 'Drinkware')
       );
       return [...predefined, ...extras].slice(0, 4);
     }
@@ -78,13 +78,13 @@ export const PersonalizedDiscovery: React.FC<PersonalizedDiscoveryProps> = ({
           <div>
             <div className="flex items-center gap-2 text-xs font-mono uppercase font-bold tracking-wider text-[#4285F4] mb-1.5">
               <Compass className="w-3.5 h-3.5" />
-              <span>Curated For You</span>
+              <span>Men's & Unisex Picks</span>
             </div>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight font-display">
-              Made for your next scroll.
+              Built for Everyday.
             </h2>
             <p className="text-sm sm:text-base text-[#9AA0A6] max-w-xl mt-1">
-              Curated based on active regional trends across Mountain View, San Francisco, and New York.
+              Tech culture, made wearable. Street-ready Google classics and everyday essentials designed for the curious and thinkers in motion.
             </p>
           </div>
 
@@ -92,17 +92,17 @@ export const PersonalizedDiscovery: React.FC<PersonalizedDiscoveryProps> = ({
           <div className="flex flex-wrap items-center gap-2">
             <button
               onClick={() => {
-                setActiveSegment('campus');
-                trackViewRecommendation('Campus Commuter Picks', 4);
+                setActiveSegment('mensUnisex');
+                trackViewRecommendation("Men's & Unisex Picks", 4);
               }}
               className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${
-                activeSegment === 'campus'
-                  ? 'bg-[#17191C] text-white shadow-md border border-[#34A853]'
+                activeSegment === 'mensUnisex'
+                  ? 'bg-[#17191C] text-white shadow-md border border-[#4285F4]'
                   : 'text-[#9AA0A6] hover:text-white hover:bg-[#17191C] border border-[#2A2E33]'
               }`}
             >
-              <MapPin className="w-3.5 h-3.5 text-[#34A853]" />
-              <span>Silicon Valley Commuter</span>
+              <span className="w-2 h-2 rounded-full bg-[#4285F4]" />
+              <span>Men's & Unisex</span>
             </button>
 
             <button
@@ -122,17 +122,17 @@ export const PersonalizedDiscovery: React.FC<PersonalizedDiscoveryProps> = ({
 
             <button
               onClick={() => {
-                setActiveSegment('classics');
-                trackViewRecommendation('Everyday Classics', 4);
+                setActiveSegment('campus');
+                trackViewRecommendation('Campus Commuter Picks', 4);
               }}
               className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${
-                activeSegment === 'classics'
-                  ? 'bg-[#17191C] text-white shadow-md border border-[#4285F4]'
+                activeSegment === 'campus'
+                  ? 'bg-[#17191C] text-white shadow-md border border-[#34A853]'
                   : 'text-[#9AA0A6] hover:text-white hover:bg-[#17191C] border border-[#2A2E33]'
               }`}
             >
-              <span className="w-2 h-2 rounded-full bg-[#4285F4]" />
-              <span>Everyday Classics</span>
+              <MapPin className="w-3.5 h-3.5 text-[#34A853]" />
+              <span>Campus & Commuter</span>
             </button>
 
             {recentlyViewed.length > 0 && (
